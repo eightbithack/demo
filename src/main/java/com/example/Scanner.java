@@ -8,10 +8,17 @@ import java.util.HashSet;
 
 import static com.example.TokenType.*; 
 
-//for the first time
-//during each of your turns
 //keywords that dont have reminder text but describe the effect
+    //think the answer is to just ignore anything in parens - could strip it out during initial processing
 //costs
+    //think this is a regex - mana costs are contained within {}, so those can be matched to
+//numerical descriptors (first/second, once/twice, etc)
+    //this feels like it's solved with either a library or just a map of words to tokens
+    //I think it has to map to tokens bc "twice" and "second" probably can't just map to 2? (can they?)
+//counter types - especially for one-ofs like Drake Hatcher's incubation counters.
+    //either all types need to be hardcoded, or we just keep a generic String object token that can then be contextually typed during parsing
+//planeswalker loyalty abilities
+//activated abilities (rune-sealed wall)
 
 class Scanner {
 
@@ -41,11 +48,13 @@ class Scanner {
         shorthand_keywords.add("indestructible");
         shorthand_keywords.add("flying");
         shorthand_keywords.add("defender");
+        shorthand_keywords.add("prowess");
     }
 
     static {
         casting_keywords = new HashSet<String>();
         casting_keywords.add("kicker");
+        casting_keywords.add("flashback");
     }
 
     static {
@@ -71,6 +80,7 @@ class Scanner {
         supertypes.add("token");
         supertypes.add("permanent");
         supertypes.add("spell");
+        supertypes.add("legendary");
     }
 
     //types extraction into a subtypes array
@@ -87,6 +97,9 @@ class Scanner {
         keywords.put("and",         AND);
         keywords.put("or",          OR);
         keywords.put("to",          TO);
+        keywords.put("equal",       EQUAL);
+        keywords.put("from",        FROM);
+        keywords.put("then",        THEN);
 
         //actions/events
         keywords.put("pay",         PAY);
@@ -98,21 +111,47 @@ class Scanner {
         keywords.put("gets",        GET);
         keywords.put("attack",      ATTACK);
         keywords.put("attacks",     ATTACK);
+        keywords.put("attacked",    ATTACK);
+        keywords.put("block",       BLOCK);
+        keywords.put("blocks",      BLOCK);
+        keywords.put("blocked",     BLOCK);
         keywords.put("attach",      ATTACH);
         keywords.put("gain",        GAIN);
         keywords.put("gains",       GAIN);
         keywords.put("has",         HAS);
+        keywords.put("had",         HAS);
         keywords.put("have",        HAS);
         keywords.put("cost",        COST);
         keywords.put("costs",       COST);
         keywords.put("prevent",     PREVENT);
         keywords.put("exile",       EXILE);
         keywords.put("sacrifice",   SACRIFICE);
-        keywords.put("destroy",      DESTROY);
+        keywords.put("destroy",     DESTROY);
         keywords.put("draw",        DRAW);
         keywords.put("deal",        DEAL);
+        keywords.put("deals",       DEAL);
         keywords.put("dealt",       DEAL);
         keywords.put("be",          BE);
+        keywords.put("can",         CAN);
+        keywords.put("can't",       CANNOT);
+        keywords.put("is",          IS);
+        keywords.put("targets",     TARGETS);
+        keywords.put("return",      RETURN);
+        keywords.put("look",        LOOK);
+        keywords.put("may",         MAY);
+        keywords.put("reveal",      REVEAL);
+        keywords.put("enchant",     ENCHANT);
+        keywords.put("dies",        DIES);
+        keywords.put("surveil",     SURVEIL);
+        keywords.put("scry",        SCRY);
+        keywords.put("remove",      REMOVE);
+        keywords.put("tap",         TAP);
+        keywords.put("copy",        COPY);
+        keywords.put("discard",     DISCARD);
+        keywords.put("mill",        MILL);
+        keywords.put("choose",      CHOOSE);
+        keywords.put("chooses",     CHOOSE);
+        keywords.put("choice",      CHOOSE);
         
         //targeting distinctions
         keywords.put("other",       OTHER);
@@ -121,9 +160,30 @@ class Scanner {
         keywords.put("non",         NON);
         keywords.put("target",      TARGET);
         keywords.put("it",          IT);
+        keywords.put("its",         IT);
+        keywords.put("it's",        IT_IS);
         keywords.put("that",        THAT);
         keywords.put("each",        EACH);
         keywords.put("all",         ALL);
+        keywords.put("on",          ON);
+        keywords.put("this",        THIS);
+        keywords.put("only",        ONLY);
+        keywords.put("the",         THE);
+        keywords.put("number",      NUMBER);
+        keywords.put("named",       NAMED);
+        keywords.put("your",        YOUR);
+        keywords.put("opponent",    OPPONENT);
+        keywords.put("opponents",   OPPONENT);
+        keywords.put("attacking",   ATTACKING);
+        keywords.put("blocking",    BLOCKING);
+        keywords.put("among",       AMONG);
+        keywords.put("them",        THEM);
+        keywords.put("they",        THEY);
+        keywords.put("enchanted",   ENCHANTED);
+        keywords.put("equipped",    EQUIPPED);
+        keywords.put("player",      PLAYER);
+        keywords.put("different",   DIFFERENT);
+        keywords.put("their",       THEIR);
 
         //game concepts
         keywords.put("control",     CONTROL);
@@ -131,11 +191,37 @@ class Scanner {
         keywords.put("spellname",   SPELLNAME);
         keywords.put("life",        LIFE);
         keywords.put("counter",     COUNTER);
+        keywords.put("counters",    COUNTER);
+        keywords.put("countered",   COUNTER);
         keywords.put("end",         END);
         keywords.put("turn",        TURN);
         keywords.put("turns",       TURN);
         keywords.put("combat",      COMBAT);
         keywords.put("damage",      DAMAGE);
+        keywords.put("card",        CARD);
+        keywords.put("cards",       CARD);
+        keywords.put("card's",      CARDS);
+        keywords.put("ability",     ABILITY);
+        keywords.put("triggers",    TRIGGERS);
+        keywords.put("lose",        LOSE);
+        keywords.put("game",        GAME);
+        keywords.put("win",         WIN);
+        keywords.put("graveyard",   GRAVEYARD);
+        keywords.put("library",     LIBRARY);
+        keywords.put("hand",        HAND);
+        keywords.put("mana",        MANA);
+        keywords.put("top",         TOP);
+        keywords.put("bottom",      BOTTOM);
+        keywords.put("rest",        REST);
+        keywords.put("random",      RANDOM);
+        keywords.put("order",       ORDER);
+        keywords.put("kicked",      KICKED);
+        keywords.put("type",        TYPE);
+        keywords.put("types",       TYPE);
+        keywords.put("deck",        DECK);
+        keywords.put("owner",       OWNER);
+        keywords.put("owner's",     OWNER);
+        keywords.put("owners'",     OWNER);
 
         //triggers
         keywords.put("whenever",    WHENEVER);
@@ -144,6 +230,8 @@ class Scanner {
         keywords.put("if",          IF);
         keywords.put("was",         WAS);
         keywords.put("instead",     INSTEAD);
+        keywords.put("as",          AS);
+        keywords.put("except",      EXCEPT);
 
         //timing
         keywords.put("during",      DURING);
@@ -152,7 +240,25 @@ class Scanner {
         //quantifiers
         keywords.put("more",        MORE);
         keywords.put("less",        LESS);
+        keywords.put("up",          UP);
+        keywords.put("value",       VALUE);
+        keywords.put("many",        MANY);
         
+        //annoying vestigial tokens
+        keywords.put("long",        LONG);
+        keywords.put("in",          IN);
+        keywords.put("addition",    ADDITION);
+        keywords.put("into",        INTO);
+        keywords.put("under",       UNDER);
+        keywords.put("a",           A);
+        keywords.put("an",          A);
+        keywords.put("there",       THERE);
+        keywords.put("are",         ARE);
+        keywords.put("those",       THOSE);
+        keywords.put("time",        TIME);
+        keywords.put("do",          DO);
+        keywords.put("though",      THOUGH);
+        keywords.put("that's",      THATS);
     }
 
     Scanner(List<String> source) {
@@ -194,18 +300,29 @@ class Scanner {
         return true;
     }
 
+    //prescan rules
+        //card names are removed
+        //non's are split away
+
     private void scanToken() {
         String t = advance();
         //regex for statblock
         //regex for statchange
         //regex for plural supertypes?
+            //TYPEs
+            //TYPE's
         switch(t) {
             case "first":
                 if (match("strike")) {
-                    addToken(KEYWORD, "First Strike");
+                    addToken(KEYWORD, "first strike");
                 }
                 break;
-            case "a": addToken(QUANTITY, 1);
+            case "double":
+                if (match("strike")) {
+                    addToken(KEYWORD, "double strike");
+                }
+                break;
+            
         }
 
     }
