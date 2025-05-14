@@ -10,7 +10,7 @@ import static com.example.TokenType.*;
 
 //for the first time
 //during each of your turns
-
+//keywords that dont have reminder text but describe the effect
 class Scanner {
 
     private final List<String> source;
@@ -98,6 +98,10 @@ class Scanner {
         keywords.put("cost",        COST);
         keywords.put("costs",       COST);
         keywords.put("prevent",     PREVENT);
+        keywords.put("exile",       EXILE);
+        keywords.put("sacrifice",   SACRIFICE);
+        keywords.put("destroy",      DESTROY);
+        keywords.put("draw",        DRAW);
         
         //targeting distinctions
         keywords.put("other",       OTHER);
