@@ -9,6 +9,7 @@ import java.util.HashSet;
 import static com.example.TokenType.*; 
 
 //for the first time
+//costs
 
 class Scanner {
 
@@ -134,6 +135,9 @@ class Scanner {
         keywords.put("whenever",    WHENEVER);
         keywords.put("when",        WHEN);
         keywords.put("would",       WOULD);
+        keywords.put("if",          IF);
+        keywords.put("was",         WAS);
+        keywords.put("instead",     INSTEAD);
 
         //timing
         keywords.put("during",      DURING);
