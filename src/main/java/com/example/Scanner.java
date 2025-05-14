@@ -19,6 +19,9 @@ import static com.example.TokenType.*;
     //either all types need to be hardcoded, or we just keep a generic String object token that can then be contextually typed during parsing
 //planeswalker loyalty abilities
 //activated abilities (rune-sealed wall)
+//modal spells
+//granted abilities (in quotation marks)
+//type-belonging conjugation (ie, "target player's graveyard", "target creature's mana cost", etc)
 
 class Scanner {
 
@@ -49,6 +52,7 @@ class Scanner {
         shorthand_keywords.add("flying");
         shorthand_keywords.add("defender");
         shorthand_keywords.add("prowess");
+        shorthand_keywords.add("haste");
     }
 
     static {
