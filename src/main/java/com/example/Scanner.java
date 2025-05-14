@@ -9,8 +9,13 @@ import java.util.HashSet;
 import static com.example.TokenType.*; 
 
 //for the first time
+<<<<<<< HEAD
 //during each of your turns
 //keywords that dont have reminder text but describe the effect
+=======
+//costs
+
+>>>>>>> a24d680c720a6dda2b8b38aa0f8e271b30b90a1c
 class Scanner {
 
     private final List<String> source;
@@ -22,6 +27,7 @@ class Scanner {
 
     private static final Map<String, TokenType> keywords;
     private static final HashSet<String> shorthand_keywords;
+    private static final HashSet<String> casting_keywords;
     private static final HashSet<String> supertypes;
     private static final HashSet<String> colors;
 
@@ -38,6 +44,11 @@ class Scanner {
         shorthand_keywords.add("indestructible");
         shorthand_keywords.add("flying");
         shorthand_keywords.add("defender");
+    }
+
+    static {
+        casting_keywords = new HashSet<String>();
+        casting_keywords.add("kicker");
     }
 
     static {
@@ -98,10 +109,16 @@ class Scanner {
         keywords.put("cost",        COST);
         keywords.put("costs",       COST);
         keywords.put("prevent",     PREVENT);
+<<<<<<< HEAD
         keywords.put("exile",       EXILE);
         keywords.put("sacrifice",   SACRIFICE);
         keywords.put("destroy",      DESTROY);
         keywords.put("draw",        DRAW);
+=======
+        keywords.put("deal",        DEAL);
+        keywords.put("dealt",       DEAL);
+        keywords.put("be",          BE);
+>>>>>>> a24d680c720a6dda2b8b38aa0f8e271b30b90a1c
         
         //targeting distinctions
         keywords.put("other",       OTHER);
@@ -122,11 +139,17 @@ class Scanner {
         keywords.put("counter",     COUNTER);
         keywords.put("end",         END);
         keywords.put("turn",        TURN);
+        keywords.put("turns",       TURN);
         keywords.put("combat",      COMBAT);
+        keywords.put("damage",      DAMAGE);
 
         //triggers
         keywords.put("whenever",    WHENEVER);
         keywords.put("when",        WHEN);
+        keywords.put("would",       WOULD);
+        keywords.put("if",          IF);
+        keywords.put("was",         WAS);
+        keywords.put("instead",     INSTEAD);
 
         //timing
         keywords.put("during",      DURING);
