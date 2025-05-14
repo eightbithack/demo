@@ -9,13 +9,10 @@ import java.util.HashSet;
 import static com.example.TokenType.*; 
 
 //for the first time
-<<<<<<< HEAD
 //during each of your turns
 //keywords that dont have reminder text but describe the effect
-=======
 //costs
 
->>>>>>> a24d680c720a6dda2b8b38aa0f8e271b30b90a1c
 class Scanner {
 
     private final List<String> source;
@@ -109,16 +106,13 @@ class Scanner {
         keywords.put("cost",        COST);
         keywords.put("costs",       COST);
         keywords.put("prevent",     PREVENT);
-<<<<<<< HEAD
         keywords.put("exile",       EXILE);
         keywords.put("sacrifice",   SACRIFICE);
         keywords.put("destroy",      DESTROY);
         keywords.put("draw",        DRAW);
-=======
         keywords.put("deal",        DEAL);
         keywords.put("dealt",       DEAL);
         keywords.put("be",          BE);
->>>>>>> a24d680c720a6dda2b8b38aa0f8e271b30b90a1c
         
         //targeting distinctions
         keywords.put("other",       OTHER);
