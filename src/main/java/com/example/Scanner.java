@@ -71,13 +71,16 @@ class Scanner {
 
     static {
         keywords = new HashMap<>();
+        //punctuation
         keywords.put(",",           COMMA);
         keywords.put(".",           PERIOD);
 
+        //logical grouping/connection
         keywords.put("and",         AND);
         keywords.put("or",          OR);
         keywords.put("to",          TO);
 
+        //actions/events
         keywords.put("pay",         PAY);
         keywords.put("put",         PUT);
         keywords.put("create",      CREATE);  
@@ -96,6 +99,7 @@ class Scanner {
         keywords.put("costs",       COST);
         keywords.put("prevent",     PREVENT);
         
+        //targeting distinctions
         keywords.put("other",       OTHER);
         keywords.put("you",         YOU);
         keywords.put("another",     ANOTHER);
@@ -106,6 +110,7 @@ class Scanner {
         keywords.put("each",        EACH);
         keywords.put("all",         ALL);
 
+        //game concepts
         keywords.put("control",     CONTROL);
         keywords.put("cardname",    CARDNAME);
         keywords.put("spellname",   SPELLNAME);
@@ -113,13 +118,17 @@ class Scanner {
         keywords.put("counter",     COUNTER);
         keywords.put("end",         END);
         keywords.put("turn",        TURN);
+        keywords.put("combat",      COMBAT);
 
+        //triggers
         keywords.put("whenever",    WHENEVER);
         keywords.put("when",        WHEN);
 
+        //timing
         keywords.put("during",      DURING);
         keywords.put("until",       UNTIL);
         
+        //quantifiers
         keywords.put("more",        MORE);
         keywords.put("less",        LESS);
         
