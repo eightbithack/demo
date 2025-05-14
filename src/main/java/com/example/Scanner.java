@@ -9,7 +9,6 @@ import java.util.HashSet;
 import static com.example.TokenType.*; 
 
 //for the first time
-//during each of your turns
 
 class Scanner {
 
@@ -22,6 +21,7 @@ class Scanner {
 
     private static final Map<String, TokenType> keywords;
     private static final HashSet<String> shorthand_keywords;
+    private static final HashSet<String> casting_keywords;
     private static final HashSet<String> supertypes;
     private static final HashSet<String> colors;
 
@@ -38,6 +38,11 @@ class Scanner {
         shorthand_keywords.add("indestructible");
         shorthand_keywords.add("flying");
         shorthand_keywords.add("defender");
+    }
+
+    static {
+        casting_keywords = new HashSet<String>();
+        casting_keywords.add("kicker");
     }
 
     static {
@@ -98,6 +103,9 @@ class Scanner {
         keywords.put("cost",        COST);
         keywords.put("costs",       COST);
         keywords.put("prevent",     PREVENT);
+        keywords.put("deal",        DEAL);
+        keywords.put("dealt",       DEAL);
+        keywords.put("be",          BE);
         
         //targeting distinctions
         keywords.put("other",       OTHER);
@@ -118,11 +126,14 @@ class Scanner {
         keywords.put("counter",     COUNTER);
         keywords.put("end",         END);
         keywords.put("turn",        TURN);
+        keywords.put("turns",       TURN);
         keywords.put("combat",      COMBAT);
+        keywords.put("damage",      DAMAGE);
 
         //triggers
         keywords.put("whenever",    WHENEVER);
         keywords.put("when",        WHEN);
+        keywords.put("would",       WOULD);
 
         //timing
         keywords.put("during",      DURING);
