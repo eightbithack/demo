@@ -13,21 +13,28 @@ public class AffLex {
 
     static boolean hadError = false;
 
+    static boolean tester = false;
+
     public static void main(String[] args) throws IOException {
         if (args.length > 1) {
             System.out.println("Usage: jlox [script]");
             System.exit(64); 
         } else if (args.length == 1) {
             runFile(args[0]);
-        } else {
+        } else if (tester) {
             runPrompt();
+        } else {
+            runFile("src/main/java/com/example/cardTextSample.txt");
         }
     }
 
     private static void runFile(String path) throws IOException {
         byte[] bytes = Files.readAllBytes(Paths.get(path));
-        run(new String(bytes, Charset.defaultCharset()));
-        if (hadError) System.exit(65);
+        String extract = new String(bytes, Charset.defaultCharset());
+        for (String s : extract.split("\\n")) {
+            run(s.substring(1, s.length()-2));
+            if (hadError) System.exit(65);
+        }
     }
 
     private static void runPrompt() throws IOException {

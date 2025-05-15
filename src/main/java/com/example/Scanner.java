@@ -69,6 +69,7 @@ class Scanner {
         shorthand_keywords.add("haste");
         shorthand_keywords.add("kicker");
         shorthand_keywords.add("flashback");
+        shorthand_keywords.add("deathtouch");
     }
 
     static {
@@ -184,11 +185,17 @@ class Scanner {
         keywords.put("from",        FROM);
         keywords.put("then",        THEN);
         keywords.put("with",        WITH);
+        keywords.put("and/or",      AND_OR);
+        keywords.put("unless",      UNLESS);
+        keywords.put("still",       STILL);
 
         //actions/events
         keywords.put("pay",         PAY);
+        keywords.put("paying",      PAY);
         keywords.put("put",         PUT);
+        keywords.put("puts",        PUT);
         keywords.put("create",      CREATE);  
+        keywords.put("creates",     CREATE); 
         keywords.put("enter",       ENTERS);
         keywords.put("enters",      ENTERS);
         keywords.put("get",         GET);
@@ -202,6 +209,7 @@ class Scanner {
         keywords.put("attach",      ATTACH);
         keywords.put("gain",        GAIN);
         keywords.put("gains",       GAIN);
+        keywords.put("gained",      GAIN);
         keywords.put("has",         HAS);
         keywords.put("had",         HAS);
         keywords.put("have",        HAS);
@@ -226,16 +234,28 @@ class Scanner {
         keywords.put("reveal",      REVEAL);
         keywords.put("enchant",     ENCHANT);
         keywords.put("dies",        DIES);
+        keywords.put("died",        DIES);
         keywords.put("surveil",     SURVEIL);
         keywords.put("scry",        SCRY);
         keywords.put("remove",      REMOVE);
+        keywords.put("removing",    REMOVE);
         keywords.put("tap",         TAP);
+        keywords.put("untap",       UNTAP);
+        keywords.put("untapped",    UNTAP);
         keywords.put("copy",        COPY);
         keywords.put("discard",     DISCARD);
         keywords.put("mill",        MILL);
         keywords.put("choose",      CHOOSE);
         keywords.put("chooses",     CHOOSE);
         keywords.put("choice",      CHOOSE);
+        keywords.put("chosen",      CHOOSE);
+        keywords.put("cast",        CAST);
+        keywords.put("play",        PLAY);
+        keywords.put("spend",       SPEND);
+        keywords.put("activate",    ACTIVATE);
+        keywords.put("becomes",     BECOME);
+        keywords.put("begin",       BEGIN);
+        keywords.put("resolved",    RESOLVE);
         
         //targeting distinctions
         keywords.put("other",       OTHER);
@@ -268,6 +288,10 @@ class Scanner {
         keywords.put("player",      PLAYER);
         keywords.put("different",   DIFFERENT);
         keywords.put("their",       THEIR);
+        keywords.put("divided",     DIVIDED);
+        keywords.put("source",      SOURCE);
+        keywords.put("kind",        KIND);
+        keywords.put("x",           X_VAR);
 
         //game concepts
         keywords.put("control",     CONTROL);
@@ -288,10 +312,13 @@ class Scanner {
         keywords.put("ability",     ABILITY);
         keywords.put("triggers",    TRIGGERS);
         keywords.put("lose",        LOSE);
+        keywords.put("loses",       LOSE);
+        keywords.put("lost",        LOSE);
         keywords.put("game",        GAME);
         keywords.put("win",         WIN);
         keywords.put("graveyard",   GRAVEYARD);
         keywords.put("library",     LIBRARY);
+        keywords.put("battlefield", BATTLEFIELD);
         keywords.put("hand",        HAND);
         keywords.put("mana",        MANA);
         keywords.put("top",         TOP);
@@ -306,6 +333,11 @@ class Scanner {
         keywords.put("owner",       OWNER);
         keywords.put("owner's",     OWNER);
         keywords.put("owners'",     OWNER);
+        keywords.put("effect",      EFFECT);
+        keywords.put("own",         OWN);
+        keywords.put("emblem",      EMBLEM);
+        keywords.put("excess",      EXCESS);
+        keywords.put("starting",    STARTING);
 
         //triggers
         keywords.put("whenever",    WHENEVER);
@@ -313,6 +345,7 @@ class Scanner {
         keywords.put("would",       WOULD);
         keywords.put("if",          IF);
         keywords.put("was",         WAS);
+        keywords.put("wasn't",      WAS_NOT);
         keywords.put("instead",     INSTEAD);
         keywords.put("as",          AS);
         keywords.put("except",      EXCEPT);
@@ -320,13 +353,28 @@ class Scanner {
         //timing
         keywords.put("during",      DURING);
         keywords.put("until",       UNTIL);
+        keywords.put("beginning",   BEGINNING);
+        keywords.put("next",        NEXT);
+        keywords.put("step",        STEP);
+        keywords.put("opening",     OPENING);
+        keywords.put("at",          AT);
         
         //quantifiers
         keywords.put("more",        MORE);
+        keywords.put("greater",     MORE);
         keywords.put("less",        LESS);
         keywords.put("up",          UP);
         keywords.put("value",       VALUE);
         keywords.put("many",        MANY);
+        keywords.put("once",        ONCE);
+        keywords.put("twice",       TWICE);
+        keywords.put("much",        MUCH);
+        keywords.put("amount",      AMOUNT);
+        keywords.put("least",       LEAST);
+        keywords.put("single",      SINGLE);
+        keywords.put("total",       TOTAL);
+        keywords.put("maximum",     MAXIMUM);
+        keywords.put("size",        SIZE);
         
         //annoying vestigial tokens
         keywords.put("long",        LONG);
@@ -345,6 +393,16 @@ class Scanner {
         keywords.put("that's",      THATS);
         keywords.put("of",          OF);
         keywords.put("for",         FOR);
+        keywords.put("you've",      YOU_HAVE);
+        keywords.put("rather",      RATHER);
+        keywords.put("than",        THAN);
+        keywords.put("back",        BACK);
+        keywords.put("way",         WAY);
+        keywords.put("don't",       DO_NOT);
+        keywords.put("doesn't",     DO_NOT);
+        keywords.put("no",          NO);
+        keywords.put("without",     WITHOUT);
+        keywords.put("by",          BY);
     }
 
     Scanner(List<String> source) {
