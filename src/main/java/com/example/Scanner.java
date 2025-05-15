@@ -17,7 +17,7 @@ import static com.example.TokenType.*;
 //keywords that dont have reminder text but describe the effect
     //think the answer is to just ignore anything in parens - could strip it out during initial processing
 //costs
-    //think this is a regex - mana costs are contained within {}, so those can be matched to
+    //need to decide when the cost object should be further processed?
 //numerical descriptors (first/second, once/twice, etc)
     //this feels like it's solved with either a library or just a map of words to tokens
     //I think it has to map to tokens bc "twice" and "second" probably can't just map to 2? (can they?)
@@ -42,6 +42,7 @@ class Scanner {
 
     private static final Map<String, TokenType> keywords;
     private static final Map<String, Integer> numbers;
+    private static final Map<String, Integer> iterations;
     private static final HashSet<String> shorthand_keywords;
     private static final HashSet<String> supertypes;
     private static final HashSet<String> subtypes;
@@ -145,6 +146,25 @@ class Scanner {
         numbers.put("thirteen", 13);
         numbers.put("fourteen", 14);
         numbers.put("fifteen", 15);
+    }
+
+    static {
+        iterations = new HashMap<>();
+        iterations.put("first", 1);
+        iterations.put("second", 2);
+        iterations.put("third", 3);
+        iterations.put("fourth", 4);
+        iterations.put("fifth", 5);
+        iterations.put("sixth", 6);
+        iterations.put("seventh", 7);
+        iterations.put("eighth", 8);
+        iterations.put("ninth", 9);
+        iterations.put("tenth", 10);
+        iterations.put("eleventh", 11);
+        iterations.put("twelfth", 12);
+        iterations.put("thirteenth", 13);
+        iterations.put("fourteenth", 14);
+        iterations.put("fifteenth", 15);
     }
 
     //token types?
@@ -324,6 +344,7 @@ class Scanner {
         keywords.put("though",      THOUGH);
         keywords.put("that's",      THATS);
         keywords.put("of",          OF);
+        keywords.put("for",         FOR);
     }
 
     Scanner(List<String> source) {
@@ -372,20 +393,23 @@ class Scanner {
 
     private void scanToken() {
         String t = advance().toLowerCase();
-        //regex for statblock
-        //regex for statchange
         //regex for plural supertypes?
-            //TYPEs
             //TYPE's
         switch(t) {
             case "first":
                 if (match("strike")) {
                     addToken(KEYWORD, "first strike");
                 }
+                else {
+                    addToken(ITERATION, 1);
+                }
                 break;
             case "double":
                 if (match("strike")) {
                     addToken(KEYWORD, "double strike");
+                }
+                else {
+                    addToken(DOUBLE);
                 }
                 break;
             default:
@@ -402,10 +426,12 @@ class Scanner {
                     addToken(COLOR, t);
                 } else if (numbers.containsKey(t)) {                                                                            //checking words that map to numbers - one, seven, etc
                     addToken(QUANTITY, numbers.get(t));
+                } else if (iterations.containsKey(t)) {                                                                         //checking for iterations - first, seventh, etc
+                    addToken(ITERATION, iterations.get(t));
                 } else if (t.matches("^(\\d+)$")) {                                                                       //checking for outright digits/numbers - 7, 14, etc
                     addToken(QUANTITY, Integer.parseInt(t));
-                } else if (t.matches("^{.}$")) {                                                                          //checking for cost formatting - {2}, {T}, etc
-                    addToken(COST_VALUE, t.substring(1, t.length()-1));
+                } else if (t.matches("^(\\{.+\\})+$")) {                                                                  //checking for cost formatting - {2}, {T}, etc
+                    addToken(COST_VALUE, t);
                 } else {
                     Matcher block_match = stat_block.matcher(t);
                     Matcher change_match = stat_change.matcher(t);
