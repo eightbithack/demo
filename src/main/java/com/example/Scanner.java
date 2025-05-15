@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.HashSet;
 
 import static com.example.TokenType.*; 
@@ -39,10 +41,15 @@ class Scanner {
     private int line = 1;
 
     private static final Map<String, TokenType> keywords;
+    private static final Map<String, Integer> numbers;
     private static final HashSet<String> shorthand_keywords;
     private static final HashSet<String> supertypes;
     private static final HashSet<String> subtypes;
     private static final HashSet<String> colors;
+    
+
+    private static final Pattern stat_block = Pattern.compile("([0-9]+)\\/([0-9])");
+    private static final Pattern stat_change = Pattern.compile("[\\+|\\-]([0-9]+)\\/[\\+|\\-]([0-9]+)");
 
     static {
         shorthand_keywords = new HashSet<String>();
@@ -82,6 +89,7 @@ class Scanner {
         supertypes.add("enchantment");
         supertypes.add("instant");
         supertypes.add("sorcery");
+        supertypes.add("sorceries");
         supertypes.add("planeswalker");
         supertypes.add("token");
         supertypes.add("permanent");
@@ -120,6 +128,25 @@ class Scanner {
         subtypes.add("vehicle");
     }
 
+    static {
+        numbers = new HashMap<>();
+        numbers.put("one", 1);
+        numbers.put("two", 2);
+        numbers.put("three", 3);
+        numbers.put("four", 4);
+        numbers.put("five", 5);
+        numbers.put("six", 6);
+        numbers.put("seven", 7);
+        numbers.put("eight", 8);
+        numbers.put("nine", 9);
+        numbers.put("ten", 10);
+        numbers.put("eleven", 11);
+        numbers.put("twelve", 12);
+        numbers.put("thirteen", 13);
+        numbers.put("fourteen", 14);
+        numbers.put("fifteen", 15);
+    }
+
     //token types?
 
     static {
@@ -127,6 +154,7 @@ class Scanner {
         //punctuation
         keywords.put(",",           COMMA);
         keywords.put(".",           PERIOD);
+        keywords.put("-",           DASH);
 
         //logical grouping/connection
         keywords.put("and",         AND);
@@ -135,6 +163,7 @@ class Scanner {
         keywords.put("equal",       EQUAL);
         keywords.put("from",        FROM);
         keywords.put("then",        THEN);
+        keywords.put("with",        WITH);
 
         //actions/events
         keywords.put("pay",         PAY);
@@ -365,14 +394,30 @@ class Scanner {
                     addToken(s);
                 } else if (shorthand_keywords.contains(t)) {
                     addToken(KEYWORD, t);
-                } else if (supertypes.contains(t)) {
+                } else if (supertypes.contains(t) || supertypes.contains(t.substring(0, t.length() - 1))) {
                     addToken(SUPERTYPE, t);
-                } else if (subtypes.contains(t)) {
+                } else if (subtypes.contains(t) || subtypes.contains(t.substring(0, t.length() - 1))) {
                     addToken(SUBTYPE, t);
                 } else if (colors.contains(t)) {
                     addToken(COLOR, t);
+                } else if (numbers.containsKey(t)) {
+                    addToken(QUANTITY, numbers.get(t));
+                } else if (t.matches("^(\\d+)$")) {
+                    addToken(QUANTITY, Integer.parseInt(t));
                 } else {
-                    addToken(UNRECOGNIZED, t);
+                    Matcher block_match = stat_block.matcher(t);
+                    Matcher change_match = stat_change.matcher(t);
+                    if (block_match.find()) {
+                        String statArray = "" + block_match.group(1) + " " + block_match.group(2);
+                        addToken(STAT_BLOCK, statArray);
+                    }
+                    else if (change_match.find()){
+                        String statArray = "" + change_match.group(1) + " " + change_match.group(2);
+                        addToken(STAT_CHANGE, statArray);
+                    }
+                    else {
+                        addToken(UNRECOGNIZED, t);
+                    }        
                 }
         }
 

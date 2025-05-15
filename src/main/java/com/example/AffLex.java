@@ -44,16 +44,12 @@ public class AffLex {
     }
 
     private static List<String> preprocess(String source) {
-        String test = source
-        .toLowerCase()
-        .replaceAll("^(non)", "$1 ")
-        .replaceAll("([.,])", " $1");
-        
-        System.out.println(test);
         return Arrays.asList(source
             .toLowerCase()
-            .replaceAll("([.,])", " $1")
-            .replaceAll("\\b(non)([^\\s]+)", "$1 $2")
+            .replaceAll("([.,])", " $1")                        //inserts spaces before punctuation to separate them into distinct characters
+            .replaceAll("\\b(non)([^\\s]+)", "$1 $2")           //splits 'nonX' strings into 'non X'
+            .replaceAll("\\([^()]*\\)", "")                     //deletes text inside parens (ie, reminder text)
+            .replaceAll("\\\\u2014", " - ")                     //removes the unicode dash and replaces it with the minus/smaller dash
             .split("\\s+"));
     }
 
