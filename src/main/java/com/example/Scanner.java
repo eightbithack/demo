@@ -390,32 +390,34 @@ class Scanner {
                 break;
             default:
                 TokenType s = keywords.get(t);
-                if (s != null) {
+                if (s != null) {                                                                                                //checking the major keyword tokens - when, or, etc
                     addToken(s);
-                } else if (shorthand_keywords.contains(t)) {
+                } else if (shorthand_keywords.contains(t)) {                                                                    //checking the shorthand keywords - vigilance, kicker, etc
                     addToken(KEYWORD, t);
-                } else if (supertypes.contains(t) || supertypes.contains(t.substring(0, t.length() - 1))) {
+                } else if (supertypes.contains(t) || supertypes.contains(t.substring(0, t.length() - 1))) {          //checking the supertypes - creature, spell, etc - plus their plurals
                     addToken(SUPERTYPE, t);
-                } else if (subtypes.contains(t) || subtypes.contains(t.substring(0, t.length() - 1))) {
+                } else if (subtypes.contains(t) || subtypes.contains(t.substring(0, t.length() - 1))) {              //checking the subtypes - human, aura, etc - plus their generic plurals
                     addToken(SUBTYPE, t);
-                } else if (colors.contains(t)) {
+                } else if (colors.contains(t)) {                                                                                //checking the color references - white, colorless, etc
                     addToken(COLOR, t);
-                } else if (numbers.containsKey(t)) {
+                } else if (numbers.containsKey(t)) {                                                                            //checking words that map to numbers - one, seven, etc
                     addToken(QUANTITY, numbers.get(t));
-                } else if (t.matches("^(\\d+)$")) {
+                } else if (t.matches("^(\\d+)$")) {                                                                       //checking for outright digits/numbers - 7, 14, etc
                     addToken(QUANTITY, Integer.parseInt(t));
+                } else if (t.matches("^{.}$")) {                                                                          //checking for cost formatting - {2}, {T}, etc
+                    addToken(COST_VALUE, t.substring(1, t.length()-1));
                 } else {
                     Matcher block_match = stat_block.matcher(t);
                     Matcher change_match = stat_change.matcher(t);
-                    if (block_match.find()) {
+                    if (block_match.find()) {                                                                                   //checking for stat block formatting - 1/1, 7/2, etc
                         String statArray = "" + block_match.group(1) + " " + block_match.group(2);
                         addToken(STAT_BLOCK, statArray);
                     }
-                    else if (change_match.find()){
+                    else if (change_match.find()){                                                                              //checking for stat change formatting - +0/+1, -3/+3, etc
                         String statArray = "" + change_match.group(1) + " " + change_match.group(2);
                         addToken(STAT_CHANGE, statArray);
                     }
-                    else {
+                    else {                                                                                                      //base case for token types, potentially card names, and errors
                         addToken(UNRECOGNIZED, t);
                     }        
                 }
