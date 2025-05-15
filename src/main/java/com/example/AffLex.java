@@ -44,7 +44,17 @@ public class AffLex {
     }
 
     private static List<String> preprocess(String source) {
-        return Arrays.asList(source.toLowerCase().replaceAll("([.,])", " $1").replaceAll("(non)", "$1 ").split("\\s+"));
+        String test = source
+        .toLowerCase()
+        .replaceAll("^(non)", "$1 ")
+        .replaceAll("([.,])", " $1");
+        
+        System.out.println(test);
+        return Arrays.asList(source
+            .toLowerCase()
+            .replaceAll("([.,])", " $1")
+            .replaceAll("\\b(non)([^\\s]+)", "$1 $2")
+            .split("\\s+"));
     }
 
     private static void run(String source) {

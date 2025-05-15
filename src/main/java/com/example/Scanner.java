@@ -115,6 +115,9 @@ class Scanner {
     //types extraction into a subtypes array
     static {
         subtypes = new HashSet<>(Arrays.asList(getTypes()));
+        subtypes.add("equipment");
+        subtypes.add("aura");
+        subtypes.add("vehicle");
     }
 
     //token types?
@@ -291,6 +294,7 @@ class Scanner {
         keywords.put("do",          DO);
         keywords.put("though",      THOUGH);
         keywords.put("that's",      THATS);
+        keywords.put("of",          OF);
     }
 
     Scanner(List<String> source) {
