@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 
 public class AffLex {
@@ -42,8 +43,13 @@ public class AffLex {
         }
     }
 
+    private static List<String> preprocess(String source) {
+        return Arrays.asList(source.toLowerCase().replaceAll("([.,])", " $1").replaceAll("(non)", "$1 ").split("\\s+"));
+    }
+
     private static void run(String source) {
-        Scanner scanner = new Scanner(source);
+        List<String> test = preprocess(source);
+        Scanner scanner = new Scanner(test);
         List<Token> tokens = scanner.scanTokens();
 
         // For now, just print the tokens.

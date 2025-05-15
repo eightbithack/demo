@@ -1,6 +1,10 @@
 package com.example;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +26,8 @@ import static com.example.TokenType.*;
 //modal spells
 //granted abilities (in quotation marks)
 //type-belonging conjugation (ie, "target player's graveyard", "target creature's mana cost", etc)
+//dash character in lines like "Ward-Pay 7 Life"
+    //replace the double dash character with a space?
 
 class Scanner {
 
@@ -34,8 +40,8 @@ class Scanner {
 
     private static final Map<String, TokenType> keywords;
     private static final HashSet<String> shorthand_keywords;
-    private static final HashSet<String> casting_keywords;
     private static final HashSet<String> supertypes;
+    private static final HashSet<String> subtypes;
     private static final HashSet<String> colors;
 
     static {
@@ -53,12 +59,8 @@ class Scanner {
         shorthand_keywords.add("defender");
         shorthand_keywords.add("prowess");
         shorthand_keywords.add("haste");
-    }
-
-    static {
-        casting_keywords = new HashSet<String>();
-        casting_keywords.add("kicker");
-        casting_keywords.add("flashback");
+        shorthand_keywords.add("kicker");
+        shorthand_keywords.add("flashback");
     }
 
     static {
@@ -85,9 +87,35 @@ class Scanner {
         supertypes.add("permanent");
         supertypes.add("spell");
         supertypes.add("legendary");
+        supertypes.add("basic");
+    }
+
+    public static String[] loadArrayFromFile(String filePath) throws IOException {
+        List<String> lines = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                lines.add(line.toLowerCase());
+            }
+        }
+        return lines.toArray(new String[0]);
+    }
+
+    public static String[] getTypes() {
+        String filePath = "src/main/java/com/example/CreatureTypes.txt"; 
+        try {
+            String[] stringArray = loadArrayFromFile(filePath);
+            return stringArray;
+        } catch (IOException e) {
+            System.err.println("Error loading array from file: " + e.getMessage());
+        }
+        return null;
     }
 
     //types extraction into a subtypes array
+    static {
+        subtypes = new HashSet<>(Arrays.asList(getTypes()));
+    }
 
     //token types?
 
@@ -297,8 +325,9 @@ class Scanner {
     }
 
     private boolean match(String expected) {
+        //System.out.println("current: " + source.get(current) + ", expected: " + expected + ", check is " + (source.get(current) != expected));
         if (isAtEnd()) return false;
-        if (source.get(current) != expected) return false;
+        if (!source.get(current).equals(expected)) return false;
     
         current++;
         return true;
@@ -309,7 +338,7 @@ class Scanner {
         //non's are split away
 
     private void scanToken() {
-        String t = advance();
+        String t = advance().toLowerCase();
         //regex for statblock
         //regex for statchange
         //regex for plural supertypes?
@@ -326,7 +355,21 @@ class Scanner {
                     addToken(KEYWORD, "double strike");
                 }
                 break;
-            
+            default:
+                TokenType s = keywords.get(t);
+                if (s != null) {
+                    addToken(s);
+                } else if (shorthand_keywords.contains(t)) {
+                    addToken(KEYWORD, t);
+                } else if (supertypes.contains(t)) {
+                    addToken(SUPERTYPE, t);
+                } else if (subtypes.contains(t)) {
+                    addToken(SUBTYPE, t);
+                } else if (colors.contains(t)) {
+                    addToken(COLOR, t);
+                } else {
+                    addToken(UNRECOGNIZED, t);
+                }
         }
 
     }
