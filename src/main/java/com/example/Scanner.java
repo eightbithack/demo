@@ -349,6 +349,7 @@ class Scanner {
         keywords.put("anywhere",    ANYWHERE);
         keywords.put("onto",        ONTO);
         keywords.put("they're",     THEY_ARE);
+        keywords.put("who",         WHO);
 
         //game concepts
         keywords.put("control",     CONTROL);
