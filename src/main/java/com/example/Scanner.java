@@ -39,6 +39,7 @@ class Scanner {
     private int current = 0;
     private String fulltext = "";
     private int line = 1;
+    private static final String charact = "characteristics";
 
     private static final Map<String, TokenType> keywords;
     private static final Map<String, Integer> numbers;
@@ -74,6 +75,33 @@ class Scanner {
         shorthand_keywords.add("affinity");
         shorthand_keywords.add("changeling");
         shorthand_keywords.add("crew");
+        shorthand_keywords.add("convoke");
+        shorthand_keywords.add("adapt");
+        shorthand_keywords.add("cycling");
+        shorthand_keywords.add("replicate");
+        shorthand_keywords.add("annihilator");
+        shorthand_keywords.add("madness");
+        shorthand_keywords.add("devoid");
+        shorthand_keywords.add("emerge");
+        shorthand_keywords.add("eternalize");
+        shorthand_keywords.add("improvise");
+        shorthand_keywords.add("unearth");
+        shorthand_keywords.add("ascend");
+        shorthand_keywords.add("evolve");
+        shorthand_keywords.add("storm");
+        shorthand_keywords.add("mentor");
+        shorthand_keywords.add("dredge");
+        shorthand_keywords.add("exalted");
+        shorthand_keywords.add("shroud");
+        shorthand_keywords.add("afterlife");
+        shorthand_keywords.add("modular");
+        shorthand_keywords.add("retrace");
+        shorthand_keywords.add("vanishing");
+        shorthand_keywords.add("evoke");
+        shorthand_keywords.add("persist");
+        shorthand_keywords.add("undying");
+        shorthand_keywords.add("outlast");
+        shorthand_keywords.add("fabricate");
     }
 
     static {
@@ -102,6 +130,7 @@ class Scanner {
         supertypes.add("spell");
         supertypes.add("legendary");
         supertypes.add("basic");
+        supertypes.add("historic");
     }
 
     public static String[] loadArrayFromFile(String filePath) throws IOException {
@@ -139,6 +168,7 @@ class Scanner {
         subtypes.add("mountain");
         subtypes.add("forest");
         subtypes.add("gate");
+        subtypes.add("saga");
     }
 
     static {
@@ -321,6 +351,7 @@ class Scanner {
         keywords.put("exploits",    EXPLOIT);
         keywords.put("contain",     CONTAIN);
         keywords.put("manifest",    MANIFEST);
+        keywords.put("manifested",  MANIFEST);
         keywords.put("remain",      REMAIN);
         keywords.put("remains",     REMAIN);
         keywords.put("exert",       EXERT);
@@ -333,6 +364,7 @@ class Scanner {
         keywords.put("move",        MOVE);
         keywords.put("investigate", INVESTIGATE);
         keywords.put("populate",    POPULATE);
+        keywords.put("support",     SUPPORT);
         
         //targeting distinctions
         keywords.put("other",       OTHER);
@@ -382,7 +414,7 @@ class Scanner {
         keywords.put("control",     CONTROL);
         keywords.put("controls",    CONTROL);
         keywords.put("controlled",  CONTROL);
-        keywords.put("cardname",    CARDNAME);
+        keywords.put("~cardname~",  CARDNAME);
         keywords.put("spellname",   SPELLNAME);
         keywords.put("life",        LIFE);
         keywords.put("counter",     COUNTER);
@@ -446,6 +478,9 @@ class Scanner {
         keywords.put("base",        BASE);
         keywords.put("new",         NEW);
         keywords.put("devotion",    DEVOTION);
+        keywords.put("coin",        COIN);
+        keywords.put("unspent",     UNSPENT);
+        
 
         //triggers
         keywords.put("whenever",    WHENEVER);
@@ -505,6 +540,8 @@ class Scanner {
         keywords.put("half",        HALF);
         keywords.put("rounded",     ROUND);
         keywords.put("down",        DOWN);
+        keywords.put("same",        SAME);
+        keywords.put("both",        BOTH);
         
         //annoying vestigial tokens
         keywords.put("long",        LONG);
@@ -521,6 +558,8 @@ class Scanner {
         keywords.put("time",        TIME);
         keywords.put("do",          DO);
         keywords.put("does",        DO);
+        keywords.put("did",         DO);
+        keywords.put("didn't",      THOUGH);
         keywords.put("though",      THOUGH);
         keywords.put("that's",      THATS);
         keywords.put("of",          OF);
@@ -532,12 +571,16 @@ class Scanner {
         keywords.put("way",         WAY);
         keywords.put("don't",       DO_NOT);
         keywords.put("doesn't",     DO_NOT);
+        keywords.put("didn't",      DO_NOT);
         keywords.put("no",          NO);
         keywords.put("without",     WITHOUT);
         keywords.put("by",          BY);
         keywords.put("putting",     PUTTING);
         keywords.put("been",        BEEN);
         keywords.put("able",        ABLE);
+        keywords.put(charact,       CHARACS);
+        keywords.put("using",       USING);
+        keywords.put("left",        LEFT);
     }
 
     Scanner(List<String> source) {
@@ -607,6 +650,65 @@ class Scanner {
                 }
                 else {
                     addToken(DOUBLE);
+                }
+                break;
+            case "living":
+                if (match("weapon")) {
+                    addToken(KEYWORD, "living weapon");
+                }
+                else {
+                    addToken(UNRECOGNIZED, t);
+                }
+                break;
+            case "split":
+                if (match("second")) {
+                    addToken(KEYWORD, "split second");
+                }
+                else {
+                    addToken(UNRECOGNIZED, t);
+                }
+                break;
+            case "battle":
+                if (match("cry")) {
+                    addToken(KEYWORD, "battle cry");
+                }
+                else {
+                    addToken(SUPERTYPE, "battle");
+                }
+                break;
+            case "umbra":
+                if (match("armor")) {
+                    addToken(KEYWORD, "umbra armor");
+                }
+                else {
+                    addToken(UNRECOGNIZED, t);
+                }
+                break;
+            case "face":
+                if (match("up")) {
+                    addToken(FACEUP);
+                }
+                else if (match("down")) {
+                    addToken(FACEDOWN);
+                }
+                else {
+                    addToken(UNRECOGNIZED, t);
+                }
+                break;
+            case "collect":
+                if (match("evidence")) {
+                    addToken(COLLECT_EV);
+                }
+                else {
+                    addToken(UNRECOGNIZED, t);
+                }
+                break;
+            case "city's":
+                if (match("blessing")) {
+                    addToken(CITY_BLESS);
+                }
+                else {
+                    addToken(UNRECOGNIZED, t);
                 }
                 break;
             default:
