@@ -49,15 +49,15 @@ class Scanner {
     private static final HashSet<String> colors;
     
 
-    private static final Pattern stat_block = Pattern.compile("([0-9]+)\\/([0-9])");
-    private static final Pattern stat_change = Pattern.compile("[\\+|\\-]([0-9]+)\\/[\\+|\\-]([0-9]+)");
+    private static final Pattern stat_block = Pattern.compile("([0-9]+|x)\\/([0-9]+|x)");
+    private static final Pattern stat_change = Pattern.compile("(\\+|\\-)([0-9]+|x)\\/(\\+|\\-)([0-9]+|x)");
 
     static {
         shorthand_keywords = new HashSet<String>();
         shorthand_keywords.add("vigilance");
         shorthand_keywords.add("menace");
         shorthand_keywords.add("trample");
-        shorthand_keywords.add("lifeline");
+        shorthand_keywords.add("lifelink");
         shorthand_keywords.add("reach");
         shorthand_keywords.add("ward");
         shorthand_keywords.add("flash");
@@ -70,6 +70,10 @@ class Scanner {
         shorthand_keywords.add("kicker");
         shorthand_keywords.add("flashback");
         shorthand_keywords.add("deathtouch");
+        shorthand_keywords.add("protection");
+        shorthand_keywords.add("affinity");
+        shorthand_keywords.add("changeling");
+        shorthand_keywords.add("crew");
     }
 
     static {
@@ -128,6 +132,13 @@ class Scanner {
         subtypes.add("equipment");
         subtypes.add("aura");
         subtypes.add("vehicle");
+        subtypes.add("elves");
+        subtypes.add("plains");
+        subtypes.add("island");
+        subtypes.add("swamp");
+        subtypes.add("mountain");
+        subtypes.add("forest");
+        subtypes.add("gate");
     }
 
     static {
@@ -170,12 +181,18 @@ class Scanner {
 
     //token types?
 
+    //clean up the subordering to group similar subcategories
+    //fix the inconsistency about type pluralization - should be the singular
+
     static {
         keywords = new HashMap<>();
         //punctuation
         keywords.put(",",           COMMA);
         keywords.put(".",           PERIOD);
         keywords.put("-",           DASH);
+        keywords.put(":",           COLON);
+        keywords.put("\\u2022",     DOT);
+        keywords.put("\"",          QUOTE);
 
         //logical grouping/connection
         keywords.put("and",         AND);
@@ -188,6 +205,8 @@ class Scanner {
         keywords.put("and/or",      AND_OR);
         keywords.put("unless",      UNLESS);
         keywords.put("still",       STILL);
+        keywords.put("already",     ALREADY);
+        keywords.put("otherwise",   OTHERWISE);
 
         //actions/events
         keywords.put("pay",         PAY);
@@ -207,19 +226,28 @@ class Scanner {
         keywords.put("blocks",      BLOCK);
         keywords.put("blocked",     BLOCK);
         keywords.put("attach",      ATTACH);
+        keywords.put("attached",    ATTACH);
         keywords.put("gain",        GAIN);
         keywords.put("gains",       GAIN);
         keywords.put("gained",      GAIN);
         keywords.put("has",         HAS);
         keywords.put("had",         HAS);
         keywords.put("have",        HAS);
+        keywords.put("hasn't",      HAS_NOT);
         keywords.put("cost",        COST);
         keywords.put("costs",       COST);
         keywords.put("prevent",     PREVENT);
         keywords.put("exile",       EXILE);
+        keywords.put("exiles",      EXILE);
+        keywords.put("exiled",      EXILE);
         keywords.put("sacrifice",   SACRIFICE);
+        keywords.put("sacrifices",  SACRIFICE);
+        keywords.put("sacrificed",  SACRIFICE);
         keywords.put("destroy",     DESTROY);
+        keywords.put("destroys",    DESTROY);
+        keywords.put("destroyed",   DESTROY);
         keywords.put("draw",        DRAW);
+        keywords.put("draws",       DRAW);
         keywords.put("deal",        DEAL);
         keywords.put("deals",       DEAL);
         keywords.put("dealt",       DEAL);
@@ -232,30 +260,53 @@ class Scanner {
         keywords.put("look",        LOOK);
         keywords.put("may",         MAY);
         keywords.put("reveal",      REVEAL);
+        keywords.put("reveals",     REVEAL);
+        keywords.put("revealed",    REVEAL);
         keywords.put("enchant",     ENCHANT);
-        keywords.put("dies",        DIES);
-        keywords.put("died",        DIES);
+        keywords.put("equip",       EQUIP);
+        keywords.put("die",         DIE);
+        keywords.put("dies",        DIE);
+        keywords.put("died",        DIE);
         keywords.put("surveil",     SURVEIL);
         keywords.put("scry",        SCRY);
         keywords.put("remove",      REMOVE);
         keywords.put("removing",    REMOVE);
         keywords.put("tap",         TAP);
+        keywords.put("tapped",      TAP);
         keywords.put("untap",       UNTAP);
         keywords.put("untapped",    UNTAP);
         keywords.put("copy",        COPY);
+        keywords.put("copies",      COPY);
         keywords.put("discard",     DISCARD);
+        keywords.put("discards",    DISCARD);
         keywords.put("mill",        MILL);
+        keywords.put("mills",       MILL);
         keywords.put("choose",      CHOOSE);
         keywords.put("chooses",     CHOOSE);
         keywords.put("choice",      CHOOSE);
         keywords.put("chosen",      CHOOSE);
         keywords.put("cast",        CAST);
+        keywords.put("casts",       CAST);
         keywords.put("play",        PLAY);
         keywords.put("spend",       SPEND);
+        keywords.put("spent",       SPEND);
         keywords.put("activate",    ACTIVATE);
+        keywords.put("become",      BECOME);
         keywords.put("becomes",     BECOME);
         keywords.put("begin",       BEGIN);
         keywords.put("resolved",    RESOLVE);
+        keywords.put("cause",       CAUSE);
+        keywords.put("causes",      CAUSE);
+        keywords.put("search",      SEARCH);
+        keywords.put("shuffle",     SHUFFLE);
+        keywords.put("leave",       LEAVE);
+        keywords.put("leaves",      LEAVE);
+        keywords.put("add",         ADD);
+        keywords.put("distribute",  DISTRIBUTE);
+        keywords.put("fight",       FIGHT);
+        keywords.put("fights",      FIGHT);
+        keywords.put("separate",    SEPARATE);
+        keywords.put("change",      CHANGE);
         
         //targeting distinctions
         keywords.put("other",       OTHER);
@@ -286,15 +337,23 @@ class Scanner {
         keywords.put("enchanted",   ENCHANTED);
         keywords.put("equipped",    EQUIPPED);
         keywords.put("player",      PLAYER);
+        keywords.put("players",      PLAYER);
         keywords.put("different",   DIFFERENT);
         keywords.put("their",       THEIR);
         keywords.put("divided",     DIVIDED);
         keywords.put("source",      SOURCE);
+        keywords.put("sources",     SOURCE);
         keywords.put("kind",        KIND);
         keywords.put("x",           X_VAR);
+        keywords.put("controller",  CONTROLLER);
+        keywords.put("anywhere",    ANYWHERE);
+        keywords.put("onto",        ONTO);
+        keywords.put("they're",     THEY_ARE);
 
         //game concepts
         keywords.put("control",     CONTROL);
+        keywords.put("controls",    CONTROL);
+        keywords.put("controlled",  CONTROL);
         keywords.put("cardname",    CARDNAME);
         keywords.put("spellname",   SPELLNAME);
         keywords.put("life",        LIFE);
@@ -310,6 +369,7 @@ class Scanner {
         keywords.put("cards",       CARD);
         keywords.put("card's",      CARDS);
         keywords.put("ability",     ABILITY);
+        keywords.put("abilities",   ABILITY);
         keywords.put("triggers",    TRIGGERS);
         keywords.put("lose",        LOSE);
         keywords.put("loses",       LOSE);
@@ -317,9 +377,11 @@ class Scanner {
         keywords.put("game",        GAME);
         keywords.put("win",         WIN);
         keywords.put("graveyard",   GRAVEYARD);
+        keywords.put("graveyards",  GRAVEYARD);
         keywords.put("library",     LIBRARY);
         keywords.put("battlefield", BATTLEFIELD);
         keywords.put("hand",        HAND);
+        keywords.put("hands",       HAND);
         keywords.put("mana",        MANA);
         keywords.put("top",         TOP);
         keywords.put("bottom",      BOTTOM);
@@ -338,17 +400,37 @@ class Scanner {
         keywords.put("emblem",      EMBLEM);
         keywords.put("excess",      EXCESS);
         keywords.put("starting",    STARTING);
+        keywords.put("any",         ANY);
+        keywords.put("everything",  EVERYTHING);
+        keywords.put("power",       POWER);
+        keywords.put("toughness",   TOUGHNESS);
+        keywords.put("color",       COLOR);
+        keywords.put("colors",      COLOR);
+        keywords.put("name",        NAME);
+        keywords.put("names",       NAME);
+        keywords.put("face-up",     FACEUP);
+        keywords.put("face-down",   FACEDOWN);
+        keywords.put("pile",        PILE);
+        keywords.put("piles",       PILE);
+        keywords.put("activated",   ACTIVATED);
+        keywords.put("loyalty",     LOYALTY);
+        keywords.put("base",        BASE);
+        keywords.put("new",         NEW);
 
         //triggers
         keywords.put("whenever",    WHENEVER);
         keywords.put("when",        WHEN);
         keywords.put("would",       WOULD);
+        keywords.put("where",       WHERE);
         keywords.put("if",          IF);
         keywords.put("was",         WAS);
+        keywords.put("were",        WERE);
         keywords.put("wasn't",      WAS_NOT);
+        keywords.put("weren't",     WERE_NOT);
         keywords.put("instead",     INSTEAD);
         keywords.put("as",          AS);
         keywords.put("except",      EXCEPT);
+        keywords.put("must",        MUST);
 
         //timing
         keywords.put("during",      DURING);
@@ -356,13 +438,21 @@ class Scanner {
         keywords.put("beginning",   BEGINNING);
         keywords.put("next",        NEXT);
         keywords.put("step",        STEP);
+        keywords.put("steps",       STEP);
         keywords.put("opening",     OPENING);
         keywords.put("at",          AT);
+        keywords.put("after",       AFTER);
+        keywords.put("phase",       PHASE);
+        keywords.put("phases",      PHASE);
+        keywords.put("upkeep",      UPKEEP);
+        keywords.put("while",       WHILE);
+        keywords.put("before",      BEFORE);
         
         //quantifiers
         keywords.put("more",        MORE);
         keywords.put("greater",     MORE);
         keywords.put("less",        LESS);
+        keywords.put("fewer",       LESS);
         keywords.put("up",          UP);
         keywords.put("value",       VALUE);
         keywords.put("many",        MANY);
@@ -371,15 +461,21 @@ class Scanner {
         keywords.put("much",        MUCH);
         keywords.put("amount",      AMOUNT);
         keywords.put("least",       LEAST);
+        keywords.put("greatest",    GREATEST);
         keywords.put("single",      SINGLE);
         keywords.put("total",       TOTAL);
         keywords.put("maximum",     MAXIMUM);
         keywords.put("size",        SIZE);
+        keywords.put("-X",          X_LOYALTY);
+        keywords.put("plus",        PLUS);
+        keywords.put("minus",       MINUS);
+        keywords.put("exactly",     EXACTLY);
         
         //annoying vestigial tokens
         keywords.put("long",        LONG);
         keywords.put("in",          IN);
         keywords.put("addition",    ADDITION);
+        keywords.put("additional",  ADDITION);
         keywords.put("into",        INTO);
         keywords.put("under",       UNDER);
         keywords.put("a",           A);
@@ -389,6 +485,7 @@ class Scanner {
         keywords.put("those",       THOSE);
         keywords.put("time",        TIME);
         keywords.put("do",          DO);
+        keywords.put("does",        DO);
         keywords.put("though",      THOUGH);
         keywords.put("that's",      THATS);
         keywords.put("of",          OF);
@@ -403,6 +500,9 @@ class Scanner {
         keywords.put("no",          NO);
         keywords.put("without",     WITHOUT);
         keywords.put("by",          BY);
+        keywords.put("putting",     PUTTING);
+        keywords.put("been",        BEEN);
+        keywords.put("able",        ABLE);
     }
 
     Scanner(List<String> source) {
@@ -445,6 +545,10 @@ class Scanner {
         return true;
     }
 
+    private boolean possessive_check(String t) {
+        return supertypes.contains(t.substring(0, t.length() - 2)) && "'s".equals(t.substring(t.length() - 2, t.length() - 1));
+    }
+
     //prescan rules
         //card names are removed
         //non's are split away
@@ -481,7 +585,7 @@ class Scanner {
                 } else if (subtypes.contains(t) || subtypes.contains(t.substring(0, t.length() - 1))) {              //checking the subtypes - human, aura, etc - plus their generic plurals
                     addToken(SUBTYPE, t);
                 } else if (colors.contains(t)) {                                                                                //checking the color references - white, colorless, etc
-                    addToken(COLOR, t);
+                    addToken(COLOR_SPEC, t);
                 } else if (numbers.containsKey(t)) {                                                                            //checking words that map to numbers - one, seven, etc
                     addToken(QUANTITY, numbers.get(t));
                 } else if (iterations.containsKey(t)) {                                                                         //checking for iterations - first, seventh, etc
@@ -490,6 +594,21 @@ class Scanner {
                     addToken(QUANTITY, Integer.parseInt(t));
                 } else if (t.matches("^(\\{.+\\})+$")) {                                                                  //checking for cost formatting - {2}, {T}, etc
                     addToken(COST_VALUE, t);
+                } else if (t.matches("^(\\+|\\-)([0-9]+)$")) {                                                            //checking for planeswalker loyalty - +2, -12, etc
+                    addToken(LOYALTY_COST, t);
+                } else if (t.length() > 3 && "'s".equals(t.substring(t.length() - 2, t.length()))) {                            //checking for possessives - player's, creature's, etc
+                    String pre = t.substring(0, t.length() - 2);
+                    if (keywords.containsKey(pre)) {
+                        addToken(keywords.get(pre));
+                        addToken(_S);
+                    }
+                    else if (supertypes.contains(pre)) {
+                        addToken(SUPERTYPE, pre);
+                        addToken(_S);
+                    }
+                    else {
+                        addToken(UNRECOGNIZED, pre);
+                    }
                 } else {
                     Matcher block_match = stat_block.matcher(t);
                     Matcher change_match = stat_change.matcher(t);
@@ -498,7 +617,7 @@ class Scanner {
                         addToken(STAT_BLOCK, statArray);
                     }
                     else if (change_match.find()){                                                                              //checking for stat change formatting - +0/+1, -3/+3, etc
-                        String statArray = "" + change_match.group(1) + " " + change_match.group(2);
+                        String statArray = "" + change_match.group(1) + change_match.group(2) + " " + change_match.group(3) + change_match.group(4);
                         addToken(STAT_CHANGE, statArray);
                     }
                     else {                                                                                                      //base case for token types, potentially card names, and errors
