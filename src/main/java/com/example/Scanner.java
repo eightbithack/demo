@@ -109,6 +109,9 @@ class Scanner {
         shorthand_keywords.add("escape");
         shorthand_keywords.add("escalate");
         shorthand_keywords.add("entwine");
+        shorthand_keywords.add("overload");
+        shorthand_keywords.add("prototype");
+        shorthand_keywords.add("plainscycling");
     }
 
     static {
@@ -608,7 +611,7 @@ class Scanner {
         keywords.put("putting",     PUTTING);
         keywords.put("been",        BEEN);
         keywords.put("able",        ABLE);
-        keywords.put(charact,       CHARACS);
+        keywords.put(charact,           CHARACS);
         keywords.put("using",       USING);
         keywords.put("left",        LEFT);
     }
