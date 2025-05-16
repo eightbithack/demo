@@ -210,6 +210,8 @@ class Scanner {
 
         //actions/events
         keywords.put("pay",         PAY);
+        keywords.put("pays",        PAY);
+        keywords.put("paid",        PAY);
         keywords.put("paying",      PAY);
         keywords.put("put",         PUT);
         keywords.put("puts",        PUT);
@@ -217,6 +219,7 @@ class Scanner {
         keywords.put("creates",     CREATE); 
         keywords.put("enter",       ENTERS);
         keywords.put("enters",      ENTERS);
+        keywords.put("entered",     ENTERS);
         keywords.put("get",         GET);
         keywords.put("gets",        GET);
         keywords.put("attack",      ATTACK);
@@ -248,6 +251,7 @@ class Scanner {
         keywords.put("destroyed",   DESTROY);
         keywords.put("draw",        DRAW);
         keywords.put("draws",       DRAW);
+        keywords.put("drawn",       DRAW);
         keywords.put("deal",        DEAL);
         keywords.put("deals",       DEAL);
         keywords.put("dealt",       DEAL);
@@ -269,6 +273,7 @@ class Scanner {
         keywords.put("died",        DIE);
         keywords.put("surveil",     SURVEIL);
         keywords.put("scry",        SCRY);
+        keywords.put("scries",      SCRY);
         keywords.put("remove",      REMOVE);
         keywords.put("removing",    REMOVE);
         keywords.put("tap",         TAP);
@@ -279,6 +284,7 @@ class Scanner {
         keywords.put("copies",      COPY);
         keywords.put("discard",     DISCARD);
         keywords.put("discards",    DISCARD);
+        keywords.put("discarded",   DISCARD);
         keywords.put("mill",        MILL);
         keywords.put("mills",       MILL);
         keywords.put("choose",      CHOOSE);
@@ -370,6 +376,7 @@ class Scanner {
         keywords.put("onto",        ONTO);
         keywords.put("they're",     THEY_ARE);
         keywords.put("who",         WHO);
+        keywords.put("modified",    MODIFIED);
 
         //game concepts
         keywords.put("control",     CONTROL);
@@ -391,7 +398,8 @@ class Scanner {
         keywords.put("card's",      CARDS);
         keywords.put("ability",     ABILITY);
         keywords.put("abilities",   ABILITY);
-        keywords.put("triggers",    TRIGGERS);
+        keywords.put("triggers",    TRIGGER);
+        keywords.put("triggered",   TRIGGER);
         keywords.put("lose",        LOSE);
         keywords.put("loses",       LOSE);
         keywords.put("lost",        LOSE);
@@ -437,6 +445,7 @@ class Scanner {
         keywords.put("loyalty",     LOYALTY);
         keywords.put("base",        BASE);
         keywords.put("new",         NEW);
+        keywords.put("devotion",    DEVOTION);
 
         //triggers
         keywords.put("whenever",    WHENEVER);
@@ -468,6 +477,8 @@ class Scanner {
         keywords.put("upkeep",      UPKEEP);
         keywords.put("while",       WHILE);
         keywords.put("before",      BEFORE);
+        keywords.put("main",        MAIN);
+        keywords.put("postcombat",  POSTCOMBAT);
         
         //quantifiers
         keywords.put("more",        MORE);
@@ -491,6 +502,9 @@ class Scanner {
         keywords.put("plus",        PLUS);
         keywords.put("minus",       MINUS);
         keywords.put("exactly",     EXACTLY);
+        keywords.put("half",        HALF);
+        keywords.put("rounded",     ROUND);
+        keywords.put("down",        DOWN);
         
         //annoying vestigial tokens
         keywords.put("long",        LONG);
