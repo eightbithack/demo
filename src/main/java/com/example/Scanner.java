@@ -307,6 +307,26 @@ class Scanner {
         keywords.put("fights",      FIGHT);
         keywords.put("separate",    SEPARATE);
         keywords.put("change",      CHANGE);
+        keywords.put("exchange",    EXCHANGE);
+        keywords.put("proliferate", PROLIFERATE);
+        keywords.put("cycle",       CYCLE);
+        keywords.put("change",      CHANGE);
+        keywords.put("exploit",     EXPLOIT);
+        keywords.put("exploits",    EXPLOIT);
+        keywords.put("contain",     CONTAIN);
+        keywords.put("manifest",    MANIFEST);
+        keywords.put("remain",      REMAIN);
+        keywords.put("remains",     REMAIN);
+        keywords.put("exert",       EXERT);
+        keywords.put("flip",        FLIP);
+        keywords.put("discover",    DISCOVER);
+        keywords.put("connive",     CONNIVE);
+        keywords.put("connives",    CONNIVE);
+        keywords.put("skip",        SKIP);
+        keywords.put("amass",       AMASS);
+        keywords.put("move",        MOVE);
+        keywords.put("investigate", INVESTIGATE);
+        keywords.put("populate",    POPULATE);
         
         //targeting distinctions
         keywords.put("other",       OTHER);
