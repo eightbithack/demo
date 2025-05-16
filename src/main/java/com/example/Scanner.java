@@ -44,6 +44,7 @@ class Scanner {
     private static final Map<String, TokenType> keywords;
     private static final Map<String, Integer> numbers;
     private static final Map<String, Integer> iterations;
+    private static final Map<String, Integer> numerals;
     private static final HashSet<String> shorthand_keywords;
     private static final HashSet<String> supertypes;
     private static final HashSet<String> subtypes;
@@ -102,6 +103,12 @@ class Scanner {
         shorthand_keywords.add("undying");
         shorthand_keywords.add("outlast");
         shorthand_keywords.add("fabricate");
+        shorthand_keywords.add("bestow");
+        shorthand_keywords.add("reinforce");
+        shorthand_keywords.add("exploit");
+        shorthand_keywords.add("escape");
+        shorthand_keywords.add("escalate");
+        shorthand_keywords.add("entwine");
     }
 
     static {
@@ -207,6 +214,25 @@ class Scanner {
         iterations.put("thirteenth", 13);
         iterations.put("fourteenth", 14);
         iterations.put("fifteenth", 15);
+    }
+
+    static {
+        numerals = new HashMap<>();
+        numerals.put("i", 1);
+        numerals.put("ii", 2);
+        numerals.put("iii", 3);
+        numerals.put("iv", 4);
+        numerals.put("v", 5);
+        numerals.put("vi", 6);
+        numerals.put("vii", 7);
+        numerals.put("viii", 8);
+        numerals.put("ix", 9);
+        numerals.put("x", 10);
+        numerals.put("xi", 11);
+        numerals.put("xii", 12);
+        numerals.put("xiii", 13);
+        numerals.put("xiv", 14);
+        numerals.put("xv", 15);
     }
 
     //token types?
@@ -365,6 +391,10 @@ class Scanner {
         keywords.put("investigate", INVESTIGATE);
         keywords.put("populate",    POPULATE);
         keywords.put("support",     SUPPORT);
+        keywords.put("exploits",    EXPLOIT);
+        keywords.put("escapes",     ESCAPE);
+        keywords.put("escaped",     ESCAPE);
+        keywords.put("cascade",     CASCADE);
         
         //targeting distinctions
         keywords.put("other",       OTHER);
@@ -727,6 +757,8 @@ class Scanner {
                     addToken(QUANTITY, numbers.get(t));
                 } else if (iterations.containsKey(t)) {                                                                         //checking for iterations - first, seventh, etc
                     addToken(ITERATION, iterations.get(t));
+                } else if (numerals.containsKey(t)) {                                                                         //checking for iterations - first, seventh, etc
+                    addToken(SAGA_COUNT, numerals.get(t));
                 } else if (t.matches("^(\\d+)$")) {                                                                       //checking for outright digits/numbers - 7, 14, etc
                     addToken(QUANTITY, Integer.parseInt(t));
                 } else if (t.matches("^(\\{.+\\})+$")) {                                                                  //checking for cost formatting - {2}, {T}, etc

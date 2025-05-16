@@ -19,11 +19,13 @@ public class AffLex {
     static boolean tester = false;
     static boolean debugMode = true;
 
-    static String[] ignoreList = {"alliance", "landfall", "raid", "morbid", "threshold", "formidable", "ferocious",
+    static String[] ignoreList = {"alliance", "landfall", "raid", "morbid", "threshold", "formidable", "ferocious", "grandeur", "magecraft", "delirium", "revolt", "imprint",
                                     "drakuseth", "etali", "aurelia", "alesha", "koma", "coil", "koma's", "alesha's", "ramos", "garna", "ruby", "kiora", "deep", "syr", "alin",
-                                        "dwynen", "arcanis", "lathril", "legitimate", "businessperson", "halana", "alena", "elenda", "arahbo", "kellan",
-                                    "food", "treasure",
-                                    "bait", "stun", "revival", "divinity", "incubation", "page", "wish", "soul", "fellowship", "poison", "stash",
+                                        "dwynen", "arcanis", "lathril", "legitimate", "businessperson", "halana", "alena", "elenda", "arahbo", "kellan", "skoa", "imskir", "rosheen",
+                                        "emrakul", "phlage", "phelia", "ashling", "ulamog", "laelia", "kaelia", "k'rrik", "breya",
+                                    "food", "treasure", "spellgorger", "blood",
+                                    "bait", "stun", "revival", "divinity", "incubation", "page", "wish", "soul", "fellowship", "poison", "stash", "shield", "oil", "quest",
+                                        "finality", "collection",
                                     "chandra", "kaito",
                                     "~cardname~"};
     static HashSet<String> ignoreSet = new HashSet<>(Arrays.asList(ignoreList));
