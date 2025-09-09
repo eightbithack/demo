@@ -1,0 +1,323 @@
+=== SENTENCE-BY-SENTENCE PARSER ANALYSIS ===
+Generated on: 2025-09-08T17:09:29.885562700
+
+=== SENTENCE 1 ===
+Input: KEYWORD(affinity) FOR(null) SUPERTYPE(artifacts) LINE_END(null)
+
+Tokens parsed: 5
+First 5 tokens:
+  KEYWORD(affinity)
+  FOR(null)
+  SUPERTYPE(artifacts)
+  LINE_END(null)
+  EOF(null)
+
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: affinity
+    Modifier:
+      Type:
+        Supertype: artifacts
+
+---
+
+=== SENTENCE 2 ===
+Input: KEYWORD(flying) LINE_END(null)
+
+Tokens parsed: 3
+First 5 tokens:
+  KEYWORD(flying)
+  LINE_END(null)
+  EOF(null)
+
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: flying
+
+---
+
+=== SENTENCE 3 ===
+Input: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) EACH(null) OPPONENT(null) DISCARD(null) A(null) CARD(null) PERIOD(null) FOR(null) EACH(null) OPPONENT(null) WHO(null) CANNOT(null) COMMA(null) YOU(null) DRAW(null) A(null) CARD(null) PERIOD(null) LINE_END(null)
+
+Tokens parsed: 24
+First 5 tokens:
+  WHEN(null)
+  THIS(null)
+  SUPERTYPE(creature)
+  ENTERS(null)
+  COMMA(null)
+
+✓ Successfully parsed!
+AST Type: TriggeredAbility
+AST Structure:
+  TriggeredAbility:
+    Trigger:
+      Literal: UNKNOWN_EVENT
+    Effect:
+      Sequence:
+        Literal: creature
+        Literal: null
+        Literal: OPPONENT
+        Literal: UNRECOGNIZED
+
+---
+
+=== SENTENCE 4 ===
+Input: NON(null) SUPERTYPE(creature) SUPERTYPE(spells) YOU(null) CAST(null) FROM(null) EXILE(null) HAS(null) KEYWORD(convoke) PERIOD(null) LINE_END(null)
+
+Tokens parsed: 12
+First 5 tokens:
+  NON_BASIC(null)
+  SUPERTYPE(creature)
+  SUPERTYPE(spells)
+  YOU(null)
+  CAST(null)
+
+✓ Successfully parsed!
+AST Type: StaticAbility
+AST Structure:
+  StaticAbility:
+    Condition:
+✗ Parse error: Cannot invoke "Object.getClass()" because "<parameter1>" is null
+Exception type: NullPointerException
+
+---
+
+=== SENTENCE 5 ===
+Input: AT(null) THE(null) BEGINNING(null) OF(null) YOUR(null) ITERATION(1) MAIN(null) PHASE(null) COMMA(null) YOU(null) MAY(null) DISCARD(null) A(null) CARD(null) PERIOD(null) IF(null) YOU(null) DO(null) COMMA(null) EXILE(null) THE(null) TOP(null) QUANTITY(2) CARD(null) OF(null) YOUR(null) LIBRARY(null) COMMA(null) THEN(null) CHOOSE(null) QUANTITY(1) OF(null) THEM(null) PERIOD(null) YOU(null) MAY(null) PLAY(null) THAT(null) CARD(null) THIS(null) TURN(null) PERIOD(null) LINE_END(null)
+
+Tokens parsed: 44
+First 5 tokens:
+  AT(null)
+  THE(null)
+  BEGINNING(null)
+  OF(null)
+  YOUR(null)
+
+✗ Failed to parse - returned null
+
+---
+
+=== SENTENCE 6 ===
+Input: CARDNAME(null) _S(null) POWER(null) IS(null) EQUAL(null) TO(null) THE(null) NUMBER(null) OF(null) CARD(null) TYPE(null) AMONG(null) CARD(null) IN(null) YOUR(null) GRAVEYARD(null) AND(null) IT(null) TOUGHNESS(null) IS(null) EQUAL(null) TO(null) THAT(null) NUMBER(null) PLUS(null) QUANTITY(1) PERIOD(null) LINE_END(null)
+
+Tokens parsed: 29
+First 5 tokens:
+  UNRECOGNIZED(null)
+  UNRECOGNIZED(null)
+  POWER(null)
+  UNRECOGNIZED(null)
+  EQUAL(null)
+
+✓ Successfully parsed!
+AST Type: StaticAbility
+AST Structure:
+  StaticAbility:
+    Condition:
+✗ Parse error: Cannot invoke "Object.getClass()" because "<parameter1>" is null
+Exception type: NullPointerException
+
+---
+
+=== SENTENCE 7 ===
+Input: KEYWORD(escape) DASH(null) COST_VALUE({2}{b}) COMMA(null) EXILE(null) ANY(null) NUMBER(null) OF(null) OTHER(null) CARD(null) FROM(null) YOUR(null) GRAVEYARD(null) WITH(null) QUANTITY(4) OR(null) MORE(null) CARD(null) TYPE(null) AMONG(null) THEM(null) PERIOD(null) LINE_END(null)
+
+Tokens parsed: 24
+First 5 tokens:
+  KEYWORD(escape)
+  DASH(null)
+  COST_VALUE({2}{b})
+  COMMA(null)
+  EXILE(null)
+
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: escape
+
+---
+
+=== SENTENCE 8 ===
+Input: COST_VALUE({3}{b}) COLON(null) RETURN(null) THIS(null) CARD(null) FROM(null) YOUR(null) GRAVEYARD(null) TO(null) THE(null) BATTLEFIELD(null) TAP(null) WITH(null) QUANTITY(2) STAT_CHANGE(+1 +1) COUNTER(null) ON(null) IT(null) PERIOD(null) LINE_END(null)
+
+Tokens parsed: 20
+First 5 tokens:
+  COST_VALUE({3}{b})
+  COLON(null)
+  RETURN(null)
+  THIS(null)
+  CARD(null)
+
+✓ Successfully parsed!
+AST Type: ActivatedAbility
+AST Structure:
+  ActivatedAbility:
+    Cost:
+      Cost: MANA = {3}{b}
+    Effect:
+      Sequence:
+        Literal: RETURN
+        Literal: CARD
+        Literal: null
+        Literal: GRAVEYARD
+        Literal: THE
+        Literal: TAP
+        Literal: 2
+        Literal: COUNTER
+        Literal: IT
+
+---
+
+=== SENTENCE 9 ===
+Input: OTHER(null) SUPERTYPE(creatures) HAS(null) BASE(null) POWER(null) AND(null) TOUGHNESS(null) STAT_BLOCK(2 2) AND(null) ARE(null) SUBTYPE(bears) IN(null) ADDITION(null) TO(null) THEIR(null) OTHER(null) TYPE(null) PERIOD(null) LINE_END(null)
+
+Tokens parsed: 19
+First 5 tokens:
+  OTHER(null)
+  SUPERTYPE(creatures)
+  HAS(null)
+  UNRECOGNIZED(null)
+  POWER(null)
+
+✓ Successfully parsed!
+AST Type: StaticAbility
+AST Structure:
+  StaticAbility:
+    Condition:
+✗ Parse error: Cannot invoke "Object.getClass()" because "<parameter1>" is null
+Exception type: NullPointerException
+
+---
+
+=== SENTENCE 10 ===
+Input: COST_VALUE({2}{g}) COLON(null) KEYWORD(adapt) QUANTITY(2) PERIOD(null) LINE_END(null)
+
+Tokens parsed: 7
+First 5 tokens:
+  COST_VALUE({2}{g})
+  COLON(null)
+  KEYWORD(adapt)
+  QUANTITY(2)
+  PERIOD(null)
+
+✓ Successfully parsed!
+AST Type: ActivatedAbility
+AST Structure:
+  ActivatedAbility:
+    Cost:
+      Cost: MANA = {2}{g}
+    Effect:
+      Sequence:
+        Literal: adapt
+        Literal: 2
+
+---
+
+=== SENTENCE 11 ===
+Input: MODIFIED(null) SUPERTYPE(creatures) YOU(null) CONTROL(null) HAS(null) KEYWORD(trample) PERIOD(null) LINE_END(null)
+
+Tokens parsed: 9
+First 5 tokens:
+  MODIFIED(null)
+  SUPERTYPE(creatures)
+  YOU(null)
+  CONTROL(null)
+  HAS(null)
+
+✓ Successfully parsed!
+AST Type: StaticAbility
+AST Structure:
+  StaticAbility:
+    Condition:
+✗ Parse error: Cannot invoke "Object.getClass()" because "<parameter1>" is null
+Exception type: NullPointerException
+
+---
+
+=== SENTENCE 12 ===
+Input: KEYWORD(flying) LINE_END(null)
+
+Tokens parsed: 3
+First 5 tokens:
+  KEYWORD(flying)
+  LINE_END(null)
+  EOF(null)
+
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: flying
+
+---
+
+=== SENTENCE 13 ===
+Input: WHEN(null) THIS(null) SUPERTYPE(creature) DIE(null) COMMA(null) RETURN(null) ANOTHER(null) TARGET(null) SUPERTYPE(artifact) CARD(null) FROM(null) YOUR(null) GRAVEYARD(null) TO(null) YOUR(null) HAND(null) PERIOD(null) LINE_END(null)
+
+Tokens parsed: 19
+First 5 tokens:
+  WHEN(null)
+  THIS(null)
+  SUPERTYPE(creature)
+  DIE(null)
+  COMMA(null)
+
+✓ Successfully parsed!
+AST Type: TriggeredAbility
+AST Structure:
+  TriggeredAbility:
+    Trigger:
+      Literal: UNKNOWN_EVENT
+    Effect:
+      Sequence:
+        Literal: creature
+        Literal: null
+        Literal: ANOTHER
+        Literal: artifact
+        Literal: CARD
+        Literal: null
+        Literal: GRAVEYARD
+        Literal: null
+        Literal: HAND
+
+---
+
+=== SENTENCE 14 ===
+Input: KEYWORD(flying) COMMA(null) KEYWORD(hexproof) FROM(null) ACTIVATED(null) AND(null) TRIGGER(null) ABILITY(null) LINE_END(null)
+
+Tokens parsed: 10
+First 5 tokens:
+  KEYWORD(flying)
+  COMMA(null)
+  KEYWORD(hexproof)
+  FROM(null)
+  UNRECOGNIZED(null)
+
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: flying
+
+---
+
+=== SENTENCE 15 ===
+Input: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) EXCHANGE(null) CONTROL(null) OF(null) THIS(null) SUPERTYPE(creature) AND(null) TARGET(null) SUPERTYPE(creature) A(null) OPPONENT(null) CONTROL(null) PERIOD(null) IF(null) YOU(null) DO(null) COMMA(null) YOU(null) GET(null) COST_VALUE({e}{e}{e}{e}) COMMA(null) THEN(null) SACRIFICE(null) THAT(null) SUPERTYPE(creature) UNLESS(null) YOU(null) PAY(null) A(null) AMOUNT(null) OF(null) COST_VALUE({e}) EQUAL(null) TO(null) IT(null) MANA(null) VALUE(null) PERIOD(null) LINE_END(null)
+
+Tokens parsed: 44
+First 5 tokens:
+  WHEN(null)
+  THIS(null)
+  SUPERTYPE(creature)
+  ENTERS(null)
+  COMMA(null)
+
+✗ Failed to parse - returned null
+
+---
+
+=== SUMMARY ===
+Total sentences tested: 15
+Successfully parsed: 9
+Failed to parse: 6
+Success rate: 60.0%

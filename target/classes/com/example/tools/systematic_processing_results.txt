@@ -1,0 +1,290 @@
+=== SYSTEMATIC SENTENCE PROCESSING RESULTS ===
+Generated on: 2025-09-08T16:49:51.320290200
+Total sentences to process: 643
+
+=== BATCH 1/13 (Sentences 1-50) ===
+
+Sentence 1: KEYWORD(affinity) FOR(null) SUPERTYPE(artifacts) LINE_END(null)
+✓ Successfully parsed as KeywordAbility
+  AST Structure:
+    KeywordAbility: affinity
+      Modifier:
+        Type:
+          Supertype: artifacts
+
+Sentence 2: KEYWORD(flying) LINE_END(null)
+✓ Successfully parsed as KeywordAbility
+  AST Structure:
+    KeywordAbility: flying
+
+Sentence 3: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) EACH(null) OPPONENT(null) DISCARD(null) A(null) CARD(null) PERIOD(null) FOR(null) EACH(null) OPPONENT(null) WHO(null) CANNOT(null) COMMA(null) YOU(null) DRAW(null) A(null) CARD(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 4: NON(null) SUPERTYPE(creature) SUPERTYPE(spells) YOU(null) CAST(null) FROM(null) EXILE(null) HAS(null) KEYWORD(convoke) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 5: AT(null) THE(null) BEGINNING(null) OF(null) YOUR(null) ITERATION(1) MAIN(null) PHASE(null) COMMA(null) YOU(null) MAY(null) DISCARD(null) A(null) CARD(null) PERIOD(null) IF(null) YOU(null) DO(null) COMMA(null) EXILE(null) THE(null) TOP(null) QUANTITY(2) CARD(null) OF(null) YOUR(null) LIBRARY(null) COMMA(null) THEN(null) CHOOSE(null) QUANTITY(1) OF(null) THEM(null) PERIOD(null) YOU(null) MAY(null) PLAY(null) THAT(null) CARD(null) THIS(null) TURN(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 6: CARDNAME(null) _S(null) POWER(null) IS(null) EQUAL(null) TO(null) THE(null) NUMBER(null) OF(null) CARD(null) TYPE(null) AMONG(null) CARD(null) IN(null) YOUR(null) GRAVEYARD(null) AND(null) IT(null) TOUGHNESS(null) IS(null) EQUAL(null) TO(null) THAT(null) NUMBER(null) PLUS(null) QUANTITY(1) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 7: KEYWORD(escape) DASH(null) COST_VALUE({2}{b}) COMMA(null) EXILE(null) ANY(null) NUMBER(null) OF(null) OTHER(null) CARD(null) FROM(null) YOUR(null) GRAVEYARD(null) WITH(null) QUANTITY(4) OR(null) MORE(null) CARD(null) TYPE(null) AMONG(null) THEM(null) PERIOD(null) LINE_END(null)
+✓ Successfully parsed as KeywordAbility
+  AST Structure:
+    KeywordAbility: escape
+
+Sentence 8: COST_VALUE({3}{b}) COLON(null) RETURN(null) THIS(null) CARD(null) FROM(null) YOUR(null) GRAVEYARD(null) TO(null) THE(null) BATTLEFIELD(null) TAP(null) WITH(null) QUANTITY(2) STAT_CHANGE(+1 +1) COUNTER(null) ON(null) IT(null) PERIOD(null) LINE_END(null)
+✗ Out of memory - likely infinite loop
+
+Sentence 9: OTHER(null) SUPERTYPE(creatures) HAS(null) BASE(null) POWER(null) AND(null) TOUGHNESS(null) STAT_BLOCK(2 2) AND(null) ARE(null) SUBTYPE(bears) IN(null) ADDITION(null) TO(null) THEIR(null) OTHER(null) TYPE(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 10: COST_VALUE({2}{g}) COLON(null) KEYWORD(adapt) QUANTITY(2) PERIOD(null) LINE_END(null)
+✓ Successfully parsed as ActivatedAbility
+  AST Structure:
+    ActivatedAbility:
+      Cost:
+        Cost: MANA = {2}{g}
+      Effect:
+        Sequence:
+          Literal: adapt
+          Literal: 2
+
+Sentence 11: MODIFIED(null) SUPERTYPE(creatures) YOU(null) CONTROL(null) HAS(null) KEYWORD(trample) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 12: KEYWORD(flying) LINE_END(null)
+✓ Successfully parsed as KeywordAbility
+  AST Structure:
+    KeywordAbility: flying
+
+Sentence 13: WHEN(null) THIS(null) SUPERTYPE(creature) DIE(null) COMMA(null) RETURN(null) ANOTHER(null) TARGET(null) SUPERTYPE(artifact) CARD(null) FROM(null) YOUR(null) GRAVEYARD(null) TO(null) YOUR(null) HAND(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 14: KEYWORD(flying) COMMA(null) KEYWORD(hexproof) FROM(null) ACTIVATED(null) AND(null) TRIGGER(null) ABILITY(null) LINE_END(null)
+✓ Successfully parsed as KeywordAbility
+  AST Structure:
+    KeywordAbility: flying
+
+Sentence 15: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) EXCHANGE(null) CONTROL(null) OF(null) THIS(null) SUPERTYPE(creature) AND(null) TARGET(null) SUPERTYPE(creature) A(null) OPPONENT(null) CONTROL(null) PERIOD(null) IF(null) YOU(null) DO(null) COMMA(null) YOU(null) GET(null) COST_VALUE({e}{e}{e}{e}) COMMA(null) THEN(null) SACRIFICE(null) THAT(null) SUPERTYPE(creature) UNLESS(null) YOU(null) PAY(null) A(null) AMOUNT(null) OF(null) COST_VALUE({e}) EQUAL(null) TO(null) IT(null) MANA(null) VALUE(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 16: WHENEVER(null) ANOTHER(null) NON(null) SUPERTYPE(token) SUPERTYPE(creature) YOU(null) CONTROL(null) ENTERS(null) COMMA(null) PROLIFERATE(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 17: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) YOU(null) GET(null) COST_VALUE({e}{e}) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 18: WHENEVER(null) THIS(null) SUPERTYPE(creature) ATTACK(null) COMMA(null) YOU(null) MAY(null) PAY(null) COST_VALUE({e}{e}) PERIOD(null) IF(null) YOU(null) DO(null) COMMA(null) IT(null) GAIN(null) KEYWORD(first strike) UNTIL(null) END(null) OF(null) TURN(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 19: WHENEVER(null) THIS(null) SUPERTYPE(creature) DEAL(null) COMBAT(null) DAMAGE(null) TO(null) A(null) PLAYER(null) COMMA(null) PUT(null) A(null) STAT_CHANGE(+1 +1) COUNTER(null) ON(null) IT(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 20: KEYWORD(reach) LINE_END(null)
+✓ Successfully parsed as KeywordAbility
+  AST Structure:
+    KeywordAbility: reach
+
+Sentence 21: WHEN(null) YOU(null) CAST(null) OR(null) CYCLE(null) CARDNAME(null) COMMA(null) CREATE(null) A(null) STAT_BLOCK(0 1) COLOR_SPEC(colorless) SUBTYPE(eldrazi) SUBTYPE(spawn) SUPERTYPE(creature) SUPERTYPE(token) WITH(null) QUOTE(null) SACRIFICE(null) THIS(null) SUPERTYPE(token) COLON(null) ADD(null) COST_VALUE({c}) PERIOD(null) QUOTE(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 22: KEYWORD(cycling) COST_VALUE({2}{g}) LINE_END(null)
+✓ Successfully parsed as KeywordAbility
+  AST Structure:
+    KeywordAbility: cycling
+      Modifier:
+        Cost: MANA = {2}{g}
+
+Sentence 23: COLOR_SPEC(red) SUPERTYPE(spells) YOU(null) CAST(null) COST(null) COST_VALUE({1}) LESS(null) TO(null) CAST(null) PERIOD(null) LINE_END(null)
+✓ Successfully parsed as Type
+  AST Structure:
+    Type:
+      Color: red
+
+Sentence 24: KEYWORD(flying) LINE_END(null)
+✓ Successfully parsed as KeywordAbility
+  AST Structure:
+    KeywordAbility: flying
+
+Sentence 25: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) SUPPORT(null) QUANTITY(2) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 26: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) YOU(null) GET(null) COST_VALUE({e}{e}) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 27: AT(null) THE(null) BEGINNING(null) OF(null) COMBAT(null) ON(null) YOUR(null) TURN(null) COMMA(null) YOU(null) MAY(null) PAY(null) COST_VALUE({e}) PERIOD(null) IF(null) YOU(null) DO(null) COMMA(null) ANOTHER(null) TARGET(null) SUPERTYPE(creature) YOU(null) CONTROL(null) GET(null) STAT_CHANGE(+1 +0) AND(null) GAIN(null) KEYWORD(haste) UNTIL(null) END(null) OF(null) TURN(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 28: LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 29: SAGA_COUNT(1) DASH(null) EXILE(null) TARGET(null) SUPERTYPE(creature) A(null) OPPONENT(null) CONTROL(null) WITH(null) POWER(null) QUANTITY(3) OR(null) MORE(null) PERIOD(null) LINE_END(null)
+✓ Successfully parsed as SagaChapter
+  AST Structure:
+    SagaChapter: 0
+      Effect:
+✗ Parse error: Cannot invoke "Object.getClass()" because "<parameter1>" is null
+
+Sentence 30: SAGA_COUNT(2) DASH(null) CREATE(null) A(null) STAT_BLOCK(2 1) COLOR_SPEC(white) SUBTYPE(cat) SUBTYPE(warrior) SUPERTYPE(creature) SUPERTYPE(token) COMMA(null) THEN(null) PUT(null) A(null) KEYWORD(vigilance) COUNTER(null) ON(null) A(null) SUPERTYPE(creature) YOU(null) CONTROL(null) PERIOD(null) LINE_END(null)
+✓ Successfully parsed as SagaChapter
+  AST Structure:
+    SagaChapter: 0
+      Effect:
+✗ Parse error: Cannot invoke "Object.getClass()" because "<parameter1>" is null
+
+Sentence 31: SAGA_COUNT(3) DASH(null) TARGET(null) SUPERTYPE(creature) YOU(null) CONTROL(null) GAIN(null) KEYWORD(double strike) UNTIL(null) END(null) OF(null) TURN(null) PERIOD(null) LINE_END(null)
+✓ Successfully parsed as SagaChapter
+  AST Structure:
+    SagaChapter: 0
+      Effect:
+✗ Parse error: Cannot invoke "Object.getClass()" because "<parameter1>" is null
+
+Sentence 32: COST_VALUE({1}{g}) COLON(null) KEYWORD(adapt) QUANTITY(2) PERIOD(null) LINE_END(null)
+✓ Successfully parsed as ActivatedAbility
+  AST Structure:
+    ActivatedAbility:
+      Cost:
+        Cost: MANA = {1}{g}
+      Effect:
+        Sequence:
+          Literal: adapt
+          Literal: 2
+
+Sentence 33: WHENEVER(null) QUANTITY(1) OR(null) MORE(null) STAT_CHANGE(+1 +1) COUNTER(null) ARE(null) PUT(null) ON(null) THIS(null) SUPERTYPE(creature) COMMA(null) RETURN(null) TARGET(null) SUPERTYPE(permanent) CARD(null) FROM(null) YOUR(null) GRAVEYARD(null) TO(null) YOUR(null) HAND(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 34: WHEN(null) UNRECOGNIZED(skoa) ENTERS(null) COMMA(null) IT(null) DEAL(null) QUANTITY(4) DAMAGE(null) TO(null) ANY(null) TARGET(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 35: UNRECOGNIZED(grandeur) DASH(null) DISCARD(null) ANOTHER(null) CARD(null) NAMED(null) CARDNAME(null) COMMA(null) SACRIFICE(null) QUANTITY(2) SUBTYPE(mountains) COLON(null) UNRECOGNIZED(skoa) DEAL(null) QUANTITY(4) DAMAGE(null) TO(null) ANY(null) TARGET(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 36: KEYWORD(flying) LINE_END(null)
+✓ Successfully parsed as KeywordAbility
+  AST Structure:
+    KeywordAbility: flying
+
+Sentence 37: SUPERTYPE(creatures) YOU(null) CONTROL(null) HAS(null) QUOTE(null) WHENEVER(null) THIS(null) SUPERTYPE(creature) BECOME(null) THE(null) TARGET(null) OF(null) A(null) SUPERTYPE(spell) OR(null) ABILITY(null) COMMA(null) REVEAL(null) THE(null) TOP(null) CARD(null) OF(null) YOUR(null) LIBRARY(null) PERIOD(null) IF(null) IT_IS(null) A(null) SUPERTYPE(land) CARD(null) COMMA(null) PUT(null) IT(null) ONTO(null) THE(null) BATTLEFIELD(null) PERIOD(null) OTHERWISE(null) COMMA(null) PUT(null) IT(null) INTO(null) YOUR(null) HAND(null) PERIOD(null) THIS(null) ABILITY(null) TRIGGER(null) ONLY(null) TWICE(null) EACH(null) TURN(null) PERIOD(null) QUOTE(null) LINE_END(null)
+✓ Successfully parsed as Type
+  AST Structure:
+    Type:
+      Supertype: creatures
+
+Sentence 38: WHENEVER(null) YOU(null) CAST(null) A(null) COLOR_SPEC(colorless) SUPERTYPE(spell) COMMA(null) CREATE(null) A(null) STAT_BLOCK(0 1) COLOR_SPEC(colorless) SUBTYPE(eldrazi) SUBTYPE(spawn) SUPERTYPE(creature) SUPERTYPE(token) WITH(null) QUOTE(null) SACRIFICE(null) THIS(null) SUPERTYPE(token) COLON(null) ADD(null) COST_VALUE({c}) PERIOD(null) QUOTE(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 39: WHENEVER(null) ANOTHER(null) COLOR_SPEC(colorless) SUPERTYPE(creature) YOU(null) CONTROL(null) ENTERS(null) COMMA(null) THIS(null) SUPERTYPE(creature) DEAL(null) QUANTITY(1) DAMAGE(null) TO(null) EACH(null) OPPONENT(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 40: KEYWORD(prowess) LINE_END(null)
+✓ Successfully parsed as KeywordAbility
+  AST Structure:
+    KeywordAbility: prowess
+
+Sentence 41: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) YOU(null) GET(null) COST_VALUE({e}{e}{e}) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 42: WHEN(null) THIS(null) SUPERTYPE(creature) DIE(null) COMMA(null) YOU(null) MAY(null) PAY(null) COST_VALUE({e}{e}{e}) PERIOD(null) WHEN(null) YOU(null) DO(null) COMMA(null) THIS(null) SUPERTYPE(creature) DEAL(null) DAMAGE(null) EQUAL(null) TO(null) IT(null) POWER(null) TO(null) ANY(null) TARGET(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 43: KEYWORD(living weapon) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 44: EQUIPPED(null) SUPERTYPE(creature) GET(null) STAT_CHANGE(+6 +6) AND(null) HAS(null) KEYWORD(trample) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 45: EQUIP(null) COST_VALUE({3}{g}{g}) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 46: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) CHOOSE(null) QUANTITY(1) DASH(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 47: DOT(null) YOU(null) GET(null) COST_VALUE({e}{e}{e}) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 48: DOT(null) PUT(null) A(null) STAT_CHANGE(+1 +1) COUNTER(null) ON(null) TARGET(null) SUPERTYPE(creature) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 49: DOT(null) CREATE(null) A(null) STAT_BLOCK(1 1) COLOR_SPEC(colorless) SUBTYPE(servo) SUPERTYPE(artifact) SUPERTYPE(creature) SUPERTYPE(token) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 50: KEYWORD(vigilance) LINE_END(null)
+✓ Successfully parsed as KeywordAbility
+  AST Structure:
+    KeywordAbility: vigilance
+
+Batch 1 Summary:
+  Success: 15
+  Failures: 34
+  Recursion issues: 1
+  Success rate: 30.0%
+
+=== BATCH 2/13 (Sentences 51-100) ===
+
+Sentence 51: THIS(null) SUPERTYPE(creature) ENTERS(null) WITH(null) QUANTITY(3) STAT_CHANGE(+1 +1) COUNTER(null) ON(null) IT(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 52: KEYWORD(flying) LINE_END(null)
+✓ Successfully parsed as KeywordAbility
+  AST Structure:
+    KeywordAbility: flying
+
+Sentence 53: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) EXILE(null) UP(null) TO(null) QUANTITY(2) TARGET(null) SUPERTYPE(artifacts) AND_OR(null) SUPERTYPE(enchantments) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 54: KEYWORD(plainscycling) COST_VALUE({2}) LINE_END(null)
+✓ Successfully parsed as KeywordAbility
+  AST Structure:
+    KeywordAbility: plainscycling
+      Modifier:
+        Cost: MANA = {2}
+
+Sentence 55: KEYWORD(replicate) COST_VALUE({1}) LINE_END(null)
+✓ Successfully parsed as KeywordAbility
+  AST Structure:
+    KeywordAbility: replicate
+      Modifier:
+        Cost: MANA = {1}
+
+Sentence 56: COUNTER(null) TARGET(null) TRIGGER(null) ABILITY(null) OR(null) COLOR_SPEC(colorless) SUPERTYPE(spell) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 57: CHOOSE(null) TARGET(null) SUPERTYPE(creature) OR(null) SUPERTYPE(planeswalker) PERIOD(null) YOU(null) GET(null) COST_VALUE({e}{e}) COMMA(null) THEN(null) YOU(null) MAY(null) PAY(null) ANY(null) AMOUNT(null) OF(null) COST_VALUE({e}) PERIOD(null) UNRECOGNIZED(galvanic) UNRECOGNIZED(discharge) DEAL(null) THAT(null) MUCH(null) DAMAGE(null) TO(null) THAT(null) SUPERTYPE(permanent) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 58: YOU(null) MAY(null) SACRIFICE(null) A(null) NON(null) SUPERTYPE(token) COLOR_SPEC(green) SUPERTYPE(creature) RATHER(null) THAN(null) PAY(null) THIS(null) SUPERTYPE(spell) _S(null) MANA(null) COST(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 59: SEARCH(null) YOUR(null) LIBRARY(null) FOR(null) UP(null) TO(null) QUANTITY(2) SUPERTYPE(basic) SUPERTYPE(land) CARD(null) COMMA(null) REVEAL(null) THOSE(null) CARD(null) COMMA(null) PUT(null) QUANTITY(1) ONTO(null) THE(null) BATTLEFIELD(null) TAP(null) AND(null) THE(null) OTHER(null) INTO(null) YOUR(null) HAND(null) COMMA(null) THEN(null) SHUFFLE(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 60: COST_VALUE({t}) COLON(null) ADD(null) COST_VALUE({c}) PERIOD(null) LINE_END(null)
+✗ Out of memory - likely infinite loop
+
+Sentence 61: COST_VALUE({t}) COMMA(null) SACRIFICE(null) A(null) SUPERTYPE(creature) COLON(null) ADD(null) COST_VALUE({b}{b}) PERIOD(null) LINE_END(null)
+✗ Out of memory - likely infinite loop
+
+Sentence 62: COLOR_SPEC(white) SUPERTYPE(spells) YOU(null) CAST(null) COST(null) COST_VALUE({1}) LESS(null) TO(null) CAST(null) PERIOD(null) LINE_END(null)
+✓ Successfully parsed as Type
+  AST Structure:
+    Type:
+      Color: white
+
+Sentence 63: RETURN(null) TARGET(null) SUPERTYPE(permanent) CARD(null) WITH(null) MANA(null) VALUE(null) QUANTITY(3) OR(null) LESS(null) FROM(null) YOUR(null) GRAVEYARD(null) TO(null) THE(null) BATTLEFIELD(null) PERIOD(null) IF(null) THIS(null) SUPERTYPE(spell) WAS(null) CAST(null) FROM(null) A(null) GRAVEYARD(null) COMMA(null) YOU(null) MAY(null) COPY(null) THIS(null) SUPERTYPE(spell) AND(null) MAY(null) CHOOSE(null) A(null) NEW(null) TARGET(null) FOR(null) THE(null) COPY(null) PERIOD(null) LINE_END(null)
+✗ Failed to parse - returned null
+
+Sentence 64: KEYWORD(flashback) COST_VALUE({4}{w}) LINE_END(null)
+✓ Successfully parsed as KeywordAbility
+  AST Structure:
+    KeywordAbility: flashback
+      Modifier:
+        Cost: MANA = {4}{w}
+
+Sentence 65: KEYWORD(menace) LINE_END(null)
+✓ Successfully parsed as KeywordAbility
+  AST Structure:
+    KeywordAbility: menace
+
+Sentence 66: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) SEARCH(null) YOUR(null) LIBRARY(null) FOR(null) A(null) CARD(null) WITH(null) MANA(null) VALUE(nu

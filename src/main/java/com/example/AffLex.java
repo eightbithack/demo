@@ -1,5 +1,6 @@
 package com.example;
 
+import static com.example.TokenType.LINE_END;
 import static com.example.TokenType.UNRECOGNIZED;
 
 import java.io.BufferedReader;
@@ -8,6 +9,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -16,7 +18,7 @@ public class AffLex {
 
     static boolean hadError = false;
 
-    static boolean tester = true;
+    static boolean tester = false;
     static boolean debugMode = false;
 
     static String[] ignoreList = {"alliance", "landfall", "raid", "morbid", "threshold", "formidable", "ferocious", "grandeur", "magecraft", "delirium", "revolt", "imprint",
@@ -47,9 +49,45 @@ public class AffLex {
         byte[] bytes = Files.readAllBytes(Paths.get(path));
         String extract = new String(bytes, Charset.defaultCharset());
         for (String s : extract.split("\\n")) {
-            run(s);
+            runExtract(s, "src/main/java/com/example/cardTextSampleTokens.txt");
             if (hadError) System.exit(65);
         }
+    }
+
+    public static void runFileExtract(String inputPath, String outputPath) throws IOException {
+        byte[] bytes = Files.readAllBytes(Paths.get(inputPath));
+        String extract = new String(bytes, Charset.defaultCharset());
+        
+        StringBuilder output = new StringBuilder();
+        
+        for (String s : extract.split("\\n")) {
+            List<String> test = preprocess(s);
+            Scanner scanner = new Scanner(test);
+            List<Token> tokens = scanner.scanTokens();
+            boolean all_clear = true;
+            
+            if (debugMode) {
+                for (Token token : tokens) {
+                    if (token.type.equals(UNRECOGNIZED) && !ignoreSet.contains(token.literal)) {
+                        if (all_clear) {
+                            output.append(s).append("\n");
+                            all_clear = false;
+                        }
+                        output.append("    ").append(token.toString()).append("\n");
+                    }
+                }
+            } else {
+                for (Token token : tokens) {
+                    output.append(token.toString()).append("\n");
+                }
+            }
+            
+            if (hadError) System.exit(65);
+        }
+        
+        // Write the output to file
+        Files.write(Paths.get(outputPath), output.toString().getBytes(), 
+                   StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
     }
 
     private static void runPrompt() throws IOException {
@@ -100,6 +138,38 @@ public class AffLex {
                 System.out.println(token);
             }
         } 
+    }
+
+    public static void runExtract(String source, String outputPath) throws IOException {
+        List<String> test = preprocess(source);
+        Scanner scanner = new Scanner(test);
+        List<Token> tokens = scanner.scanTokens();
+        boolean all_clear = true;
+        
+        StringBuilder output = new StringBuilder();
+        
+        if (debugMode) {
+            for (Token token : tokens) {
+                if (token.type.equals(UNRECOGNIZED) && !ignoreSet.contains(token.literal)) {
+                    if (all_clear) {
+                        output.append(source).append("(");
+                        all_clear = false;
+                    }
+                    output.append(token.toString()).append(") ");
+                }
+            }
+        } else {
+            for (Token token : tokens) {
+                output.append(token.toString()).append(" ");
+                if (token.type.equals(LINE_END)) {
+                    output.append("\n");
+                }
+            }
+        }
+        
+        // Write the output to file
+        Files.write(Paths.get(outputPath), output.toString().getBytes(), 
+                   StandardOpenOption.CREATE, StandardOpenOption.APPEND);
     }
 
     static void error(int line, String message) {

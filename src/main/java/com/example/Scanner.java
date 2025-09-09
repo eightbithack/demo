@@ -35,7 +35,7 @@ class Scanner {
 
     private final List<String> source;
     private final List<Token> tokens = new ArrayList<>();
-    private int start = 0;
+    //private int start = 0;
     private int current = 0;
     private String fulltext = "";
     private int line = 1;
@@ -623,7 +623,7 @@ class Scanner {
     List<Token> scanTokens() {
         while (!isAtEnd()) {
             // We are at the beginning of the next lexeme.
-            start = current;
+            //start = current;
             scanToken();
         }
         tokens.add(new Token(LINE_END, "", null, line));
@@ -656,9 +656,9 @@ class Scanner {
         return true;
     }
 
-    private boolean possessive_check(String t) {
+    /* private boolean possessive_check(String t) {
         return supertypes.contains(t.substring(0, t.length() - 2)) && "'s".equals(t.substring(t.length() - 2, t.length() - 1));
-    }
+    } */
 
     //prescan rules
         //card names are removed

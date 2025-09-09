@@ -1,0 +1,61 @@
+Expr        :=      StaticAbility
+            |       TriggeredAbility
+            |       ActivatedAbility
+            |       SpellEffect
+
+
+
+Static Abilities
+Triggered 
+
+"A"
+"Activated Abilities"
+"As an"
+"As long as"
+"As ~CARDNAME~"
+"At"
+"Attacking creatures"
+"~CARDNAME~"
+"Choose"
+COST_VALUE COLON
+"Counter"
+"Create"
+"Destroy"
+"Distribute"
+DOT
+"Double"
+"Draw"
+"During"
+"Each"
+"Enchant"
+"Enchanted"
+"End"
+"Equip"
+"Equipped"
+"Exile"
+"For"
+"Gain"
+"If"
+KEYWORD
+LOYALTY_COST
+"Mill"
+"Other"
+"Players"
+"Prevent"
+"Put"
+"Remove"
+"Return"
+"Reveal"
+"Sacrifice"
+"Search"
+SUBTYPE
+SUPERTYPE
+"Surveil"
+"Target"
+"This"
+UNRECOGNIZED
+UNRECOGNIZED DASH
+"Until"
+"When"
+"Whenever"
+"You"

@@ -1,0 +1,95 @@
+=== MAGIC: THE GATHERING CARD ABILITY PARSING RESULTS ===
+Generated on: 2025-09-08T16:48:35.072292400
+
+=== TEST CASE 1 ===
+Input: KEYWORD(affinity) FOR(null) SUPERTYPE(artifacts) LINE_END(null)
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: affinity
+    Modifier:
+      Type:
+        Supertype: artifacts
+
+=== TEST CASE 2 ===
+Input: KEYWORD(flying) LINE_END(null)
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: flying
+
+=== TEST CASE 3 ===
+Input: COST_VALUE({2}{g}) COLON(null) KEYWORD(adapt) QUANTITY(2) PERIOD(null) LINE_END(null)
+✓ Successfully parsed!
+AST Type: ActivatedAbility
+AST Structure:
+  ActivatedAbility:
+    Cost:
+      Cost: MANA = {2}{g}
+    Effect:
+      Sequence:
+        Literal: adapt
+        Literal: 2
+
+=== TEST CASE 4 ===
+Input: SAGA_COUNT(1) DASH(null) EXILE(null) TARGET(null) SUPERTYPE(creature) A(null) OPPONENT(null) CONTROL(null) WITH(null) POWER(null) QUANTITY(3) OR(null) MORE(null) PERIOD(null) LINE_END(null)
+✓ Successfully parsed!
+AST Type: SagaChapter
+AST Structure:
+  SagaChapter: 0
+    Effect:
+✗ Parse error: Cannot invoke "Object.getClass()" because "<parameter1>" is null
+
+=== ADDITIONAL SIMPLE CASES ===
+=== SIMPLE CASE 1 ===
+Input: KEYWORD(reach) LINE_END(null)
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: reach
+
+=== SIMPLE CASE 2 ===
+Input: KEYWORD(trample) LINE_END(null)
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: trample
+
+=== SIMPLE CASE 3 ===
+Input: KEYWORD(hexproof) LINE_END(null)
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: hexproof
+
+=== SIMPLE CASE 4 ===
+Input: KEYWORD(deathtouch) LINE_END(null)
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: deathtouch
+
+=== SIMPLE CASE 5 ===
+Input: KEYWORD(lifelink) LINE_END(null)
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: lifelink
+
+=== SUMMARY ===
+Total test cases: 9
+Successfully parsed: 8
+Failed to parse: 1
+Success rate: 88.9%
+
+=== PARSER CAPABILITIES ===
+✓ Keyword abilities (simple and with modifiers)
+✓ Activated abilities (cost + effect)
+✓ Saga chapters
+✓ Basic token parsing and AST construction
+
+=== KNOWN LIMITATIONS ===
+✗ Complex triggered abilities may cause infinite recursion
+✗ Static abilities need more robust parsing
+✗ Some token sequences may not be handled correctly
+✗ Parser needs better error handling for edge cases

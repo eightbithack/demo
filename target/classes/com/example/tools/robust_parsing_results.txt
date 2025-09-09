@@ -1,0 +1,381 @@
+=== ROBUST MAGIC: THE GATHERING CARD ABILITY PARSING RESULTS ===
+Generated on: 2025-09-08T16:42:40.466338200
+Total sentences to parse: 643
+
+=== SENTENCE 1 ===
+Input: KEYWORD(affinity) FOR(null) SUPERTYPE(artifacts) LINE_END(null)
+Tokens parsed: 5
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: affinity
+    Modifier:
+      Type:
+        Supertype: artifacts
+
+=== SENTENCE 2 ===
+Input: KEYWORD(flying) LINE_END(null)
+Tokens parsed: 3
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: flying
+
+=== SENTENCE 3 ===
+Input: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) EACH(null) OPPONENT(null) DISCARD(null) A(null) CARD(null) PERIOD(null) FOR(null) EACH(null) OPPONENT(null) WHO(null) CANNOT(null) COMMA(null) YOU(null) DRAW(null) A(null) CARD(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 24
+✗ Failed to parse - returned null
+
+=== SENTENCE 4 ===
+Input: NON(null) SUPERTYPE(creature) SUPERTYPE(spells) YOU(null) CAST(null) FROM(null) EXILE(null) HAS(null) KEYWORD(convoke) PERIOD(null) LINE_END(null)
+Tokens parsed: 12
+✗ Stack overflow - infinite recursion detected
+
+=== SENTENCE 5 ===
+Input: AT(null) THE(null) BEGINNING(null) OF(null) YOUR(null) ITERATION(1) MAIN(null) PHASE(null) COMMA(null) YOU(null) MAY(null) DISCARD(null) A(null) CARD(null) PERIOD(null) IF(null) YOU(null) DO(null) COMMA(null) EXILE(null) THE(null) TOP(null) QUANTITY(2) CARD(null) OF(null) YOUR(null) LIBRARY(null) COMMA(null) THEN(null) CHOOSE(null) QUANTITY(1) OF(null) THEM(null) PERIOD(null) YOU(null) MAY(null) PLAY(null) THAT(null) CARD(null) THIS(null) TURN(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 44
+✗ Failed to parse - returned null
+
+=== SENTENCE 6 ===
+Input: CARDNAME(null) _S(null) POWER(null) IS(null) EQUAL(null) TO(null) THE(null) NUMBER(null) OF(null) CARD(null) TYPE(null) AMONG(null) CARD(null) IN(null) YOUR(null) GRAVEYARD(null) AND(null) IT(null) TOUGHNESS(null) IS(null) EQUAL(null) TO(null) THAT(null) NUMBER(null) PLUS(null) QUANTITY(1) PERIOD(null) LINE_END(null)
+Tokens parsed: 29
+✗ Stack overflow - infinite recursion detected
+
+=== SENTENCE 7 ===
+Input: KEYWORD(escape) DASH(null) COST_VALUE({2}{b}) COMMA(null) EXILE(null) ANY(null) NUMBER(null) OF(null) OTHER(null) CARD(null) FROM(null) YOUR(null) GRAVEYARD(null) WITH(null) QUANTITY(4) OR(null) MORE(null) CARD(null) TYPE(null) AMONG(null) THEM(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 24
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: escape
+
+=== SENTENCE 8 ===
+Input: COST_VALUE({3}{b}) COLON(null) RETURN(null) THIS(null) CARD(null) FROM(null) YOUR(null) GRAVEYARD(null) TO(null) THE(null) BATTLEFIELD(null) TAP(null) WITH(null) QUANTITY(2) STAT_CHANGE(+1 +1) COUNTER(null) ON(null) IT(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 20
+✗ Out of memory - likely infinite loop
+
+=== SENTENCE 9 ===
+Input: OTHER(null) SUPERTYPE(creatures) HAS(null) BASE(null) POWER(null) AND(null) TOUGHNESS(null) STAT_BLOCK(2 2) AND(null) ARE(null) SUBTYPE(bears) IN(null) ADDITION(null) TO(null) THEIR(null) OTHER(null) TYPE(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 19
+✗ Stack overflow - infinite recursion detected
+
+=== SENTENCE 10 ===
+Input: COST_VALUE({2}{g}) COLON(null) KEYWORD(adapt) QUANTITY(2) PERIOD(null) LINE_END(null)
+Tokens parsed: 7
+✓ Successfully parsed!
+AST Type: ActivatedAbility
+AST Structure:
+  ActivatedAbility:
+    Cost:
+      Cost: MANA = {2}{g}
+    Effect:
+      Sequence:
+        Literal: adapt
+        Literal: 2
+
+=== SENTENCE 11 ===
+Input: MODIFIED(null) SUPERTYPE(creatures) YOU(null) CONTROL(null) HAS(null) KEYWORD(trample) PERIOD(null) LINE_END(null)
+Tokens parsed: 9
+✗ Stack overflow - infinite recursion detected
+
+=== SENTENCE 12 ===
+Input: KEYWORD(flying) LINE_END(null)
+Tokens parsed: 3
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: flying
+
+=== SENTENCE 13 ===
+Input: WHEN(null) THIS(null) SUPERTYPE(creature) DIE(null) COMMA(null) RETURN(null) ANOTHER(null) TARGET(null) SUPERTYPE(artifact) CARD(null) FROM(null) YOUR(null) GRAVEYARD(null) TO(null) YOUR(null) HAND(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 19
+✗ Failed to parse - returned null
+
+=== SENTENCE 14 ===
+Input: KEYWORD(flying) COMMA(null) KEYWORD(hexproof) FROM(null) ACTIVATED(null) AND(null) TRIGGER(null) ABILITY(null) LINE_END(null)
+Tokens parsed: 10
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: flying
+
+=== SENTENCE 15 ===
+Input: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) EXCHANGE(null) CONTROL(null) OF(null) THIS(null) SUPERTYPE(creature) AND(null) TARGET(null) SUPERTYPE(creature) A(null) OPPONENT(null) CONTROL(null) PERIOD(null) IF(null) YOU(null) DO(null) COMMA(null) YOU(null) GET(null) COST_VALUE({e}{e}{e}{e}) COMMA(null) THEN(null) SACRIFICE(null) THAT(null) SUPERTYPE(creature) UNLESS(null) YOU(null) PAY(null) A(null) AMOUNT(null) OF(null) COST_VALUE({e}) EQUAL(null) TO(null) IT(null) MANA(null) VALUE(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 44
+✗ Failed to parse - returned null
+
+=== SENTENCE 16 ===
+Input: WHENEVER(null) ANOTHER(null) NON(null) SUPERTYPE(token) SUPERTYPE(creature) YOU(null) CONTROL(null) ENTERS(null) COMMA(null) PROLIFERATE(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 13
+✗ Failed to parse - returned null
+
+=== SENTENCE 17 ===
+Input: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) YOU(null) GET(null) COST_VALUE({e}{e}) PERIOD(null) LINE_END(null)
+Tokens parsed: 11
+✗ Failed to parse - returned null
+
+=== SENTENCE 18 ===
+Input: WHENEVER(null) THIS(null) SUPERTYPE(creature) ATTACK(null) COMMA(null) YOU(null) MAY(null) PAY(null) COST_VALUE({e}{e}) PERIOD(null) IF(null) YOU(null) DO(null) COMMA(null) IT(null) GAIN(null) KEYWORD(first strike) UNTIL(null) END(null) OF(null) TURN(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 23
+✗ Failed to parse - returned null
+
+=== SENTENCE 19 ===
+Input: WHENEVER(null) THIS(null) SUPERTYPE(creature) DEAL(null) COMBAT(null) DAMAGE(null) TO(null) A(null) PLAYER(null) COMMA(null) PUT(null) A(null) STAT_CHANGE(+1 +1) COUNTER(null) ON(null) IT(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 18
+✗ Failed to parse - returned null
+
+=== SENTENCE 20 ===
+Input: KEYWORD(reach) LINE_END(null)
+Tokens parsed: 3
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: reach
+
+=== SENTENCE 21 ===
+Input: WHEN(null) YOU(null) CAST(null) OR(null) CYCLE(null) CARDNAME(null) COMMA(null) CREATE(null) A(null) STAT_BLOCK(0 1) COLOR_SPEC(colorless) SUBTYPE(eldrazi) SUBTYPE(spawn) SUPERTYPE(creature) SUPERTYPE(token) WITH(null) QUOTE(null) SACRIFICE(null) THIS(null) SUPERTYPE(token) COLON(null) ADD(null) COST_VALUE({c}) PERIOD(null) QUOTE(null) LINE_END(null)
+Tokens parsed: 26
+✗ Failed to parse - returned null
+
+=== SENTENCE 22 ===
+Input: KEYWORD(cycling) COST_VALUE({2}{g}) LINE_END(null)
+Tokens parsed: 4
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: cycling
+    Modifier:
+      Cost: MANA = {2}{g}
+
+=== SENTENCE 23 ===
+Input: COLOR_SPEC(red) SUPERTYPE(spells) YOU(null) CAST(null) COST(null) COST_VALUE({1}) LESS(null) TO(null) CAST(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 12
+✗ Stack overflow - infinite recursion detected
+
+=== SENTENCE 24 ===
+Input: KEYWORD(flying) LINE_END(null)
+Tokens parsed: 3
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: flying
+
+=== SENTENCE 25 ===
+Input: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) SUPPORT(null) QUANTITY(2) PERIOD(null) LINE_END(null)
+Tokens parsed: 10
+✗ Failed to parse - returned null
+
+=== SENTENCE 26 ===
+Input: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) YOU(null) GET(null) COST_VALUE({e}{e}) PERIOD(null) LINE_END(null)
+Tokens parsed: 11
+✗ Failed to parse - returned null
+
+=== SENTENCE 27 ===
+Input: AT(null) THE(null) BEGINNING(null) OF(null) COMBAT(null) ON(null) YOUR(null) TURN(null) COMMA(null) YOU(null) MAY(null) PAY(null) COST_VALUE({e}) PERIOD(null) IF(null) YOU(null) DO(null) COMMA(null) ANOTHER(null) TARGET(null) SUPERTYPE(creature) YOU(null) CONTROL(null) GET(null) STAT_CHANGE(+1 +0) AND(null) GAIN(null) KEYWORD(haste) UNTIL(null) END(null) OF(null) TURN(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 34
+✗ Failed to parse - returned null
+
+=== SENTENCE 28 ===
+Input: LINE_END(null)
+Tokens parsed: 2
+✓ Successfully parsed!
+AST Type: Sequence
+AST Structure:
+  Sequence:
+
+=== SENTENCE 29 ===
+Input: SAGA_COUNT(1) DASH(null) EXILE(null) TARGET(null) SUPERTYPE(creature) A(null) OPPONENT(null) CONTROL(null) WITH(null) POWER(null) QUANTITY(3) OR(null) MORE(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 16
+✓ Successfully parsed!
+AST Type: SagaChapter
+AST Structure:
+  SagaChapter: 0
+    Effect:
+✗ Parse error: Cannot invoke "Object.getClass()" because "<parameter1>" is null
+
+=== SENTENCE 30 ===
+Input: SAGA_COUNT(2) DASH(null) CREATE(null) A(null) STAT_BLOCK(2 1) COLOR_SPEC(white) SUBTYPE(cat) SUBTYPE(warrior) SUPERTYPE(creature) SUPERTYPE(token) COMMA(null) THEN(null) PUT(null) A(null) KEYWORD(vigilance) COUNTER(null) ON(null) A(null) SUPERTYPE(creature) YOU(null) CONTROL(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 23
+✓ Successfully parsed!
+AST Type: SagaChapter
+AST Structure:
+  SagaChapter: 0
+    Effect:
+✗ Parse error: Cannot invoke "Object.getClass()" because "<parameter1>" is null
+
+=== SENTENCE 31 ===
+Input: SAGA_COUNT(3) DASH(null) TARGET(null) SUPERTYPE(creature) YOU(null) CONTROL(null) GAIN(null) KEYWORD(double strike) UNTIL(null) END(null) OF(null) TURN(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 14
+✓ Successfully parsed!
+AST Type: SagaChapter
+AST Structure:
+  SagaChapter: 0
+    Effect:
+✗ Parse error: Cannot invoke "Object.getClass()" because "<parameter1>" is null
+
+=== SENTENCE 32 ===
+Input: COST_VALUE({1}{g}) COLON(null) KEYWORD(adapt) QUANTITY(2) PERIOD(null) LINE_END(null)
+Tokens parsed: 7
+✓ Successfully parsed!
+AST Type: ActivatedAbility
+AST Structure:
+  ActivatedAbility:
+    Cost:
+      Cost: MANA = {1}{g}
+    Effect:
+      Sequence:
+        Literal: adapt
+        Literal: 2
+
+=== SENTENCE 33 ===
+Input: WHENEVER(null) QUANTITY(1) OR(null) MORE(null) STAT_CHANGE(+1 +1) COUNTER(null) ARE(null) PUT(null) ON(null) THIS(null) SUPERTYPE(creature) COMMA(null) RETURN(null) TARGET(null) SUPERTYPE(permanent) CARD(null) FROM(null) YOUR(null) GRAVEYARD(null) TO(null) YOUR(null) HAND(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 24
+✗ Failed to parse - returned null
+
+=== SENTENCE 34 ===
+Input: WHEN(null) UNRECOGNIZED(skoa) ENTERS(null) COMMA(null) IT(null) DEAL(null) QUANTITY(4) DAMAGE(null) TO(null) ANY(null) TARGET(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 14
+✗ Failed to parse - returned null
+
+=== SENTENCE 35 ===
+Input: UNRECOGNIZED(grandeur) DASH(null) DISCARD(null) ANOTHER(null) CARD(null) NAMED(null) CARDNAME(null) COMMA(null) SACRIFICE(null) QUANTITY(2) SUBTYPE(mountains) COLON(null) UNRECOGNIZED(skoa) DEAL(null) QUANTITY(4) DAMAGE(null) TO(null) ANY(null) TARGET(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 22
+✗ Stack overflow - infinite recursion detected
+
+=== SENTENCE 36 ===
+Input: KEYWORD(flying) LINE_END(null)
+Tokens parsed: 3
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: flying
+
+=== SENTENCE 37 ===
+Input: SUPERTYPE(creatures) YOU(null) CONTROL(null) HAS(null) QUOTE(null) WHENEVER(null) THIS(null) SUPERTYPE(creature) BECOME(null) THE(null) TARGET(null) OF(null) A(null) SUPERTYPE(spell) OR(null) ABILITY(null) COMMA(null) REVEAL(null) THE(null) TOP(null) CARD(null) OF(null) YOUR(null) LIBRARY(null) PERIOD(null) IF(null) IT_IS(null) A(null) SUPERTYPE(land) CARD(null) COMMA(null) PUT(null) IT(null) ONTO(null) THE(null) BATTLEFIELD(null) PERIOD(null) OTHERWISE(null) COMMA(null) PUT(null) IT(null) INTO(null) YOUR(null) HAND(null) PERIOD(null) THIS(null) ABILITY(null) TRIGGER(null) ONLY(null) TWICE(null) EACH(null) TURN(null) PERIOD(null) QUOTE(null) LINE_END(null)
+Tokens parsed: 56
+✗ Stack overflow - infinite recursion detected
+
+=== SENTENCE 38 ===
+Input: WHENEVER(null) YOU(null) CAST(null) A(null) COLOR_SPEC(colorless) SUPERTYPE(spell) COMMA(null) CREATE(null) A(null) STAT_BLOCK(0 1) COLOR_SPEC(colorless) SUBTYPE(eldrazi) SUBTYPE(spawn) SUPERTYPE(creature) SUPERTYPE(token) WITH(null) QUOTE(null) SACRIFICE(null) THIS(null) SUPERTYPE(token) COLON(null) ADD(null) COST_VALUE({c}) PERIOD(null) QUOTE(null) LINE_END(null)
+Tokens parsed: 26
+✗ Failed to parse - returned null
+
+=== SENTENCE 39 ===
+Input: WHENEVER(null) ANOTHER(null) COLOR_SPEC(colorless) SUPERTYPE(creature) YOU(null) CONTROL(null) ENTERS(null) COMMA(null) THIS(null) SUPERTYPE(creature) DEAL(null) QUANTITY(1) DAMAGE(null) TO(null) EACH(null) OPPONENT(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 19
+✗ Failed to parse - returned null
+
+=== SENTENCE 40 ===
+Input: KEYWORD(prowess) LINE_END(null)
+Tokens parsed: 3
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: prowess
+
+=== SENTENCE 41 ===
+Input: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) YOU(null) GET(null) COST_VALUE({e}{e}{e}) PERIOD(null) LINE_END(null)
+Tokens parsed: 11
+✗ Failed to parse - returned null
+
+=== SENTENCE 42 ===
+Input: WHEN(null) THIS(null) SUPERTYPE(creature) DIE(null) COMMA(null) YOU(null) MAY(null) PAY(null) COST_VALUE({e}{e}{e}) PERIOD(null) WHEN(null) YOU(null) DO(null) COMMA(null) THIS(null) SUPERTYPE(creature) DEAL(null) DAMAGE(null) EQUAL(null) TO(null) IT(null) POWER(null) TO(null) ANY(null) TARGET(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 28
+✗ Failed to parse - returned null
+
+=== SENTENCE 43 ===
+Input: KEYWORD(living weapon) LINE_END(null)
+Tokens parsed: 2
+✓ Successfully parsed!
+AST Type: Sequence
+AST Structure:
+  Sequence:
+
+=== SENTENCE 44 ===
+Input: EQUIPPED(null) SUPERTYPE(creature) GET(null) STAT_CHANGE(+6 +6) AND(null) HAS(null) KEYWORD(trample) PERIOD(null) LINE_END(null)
+Tokens parsed: 9
+✗ Stack overflow - infinite recursion detected
+
+=== SENTENCE 45 ===
+Input: EQUIP(null) COST_VALUE({3}{g}{g}) LINE_END(null)
+Tokens parsed: 4
+✗ Stack overflow - infinite recursion detected
+
+=== SENTENCE 46 ===
+Input: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) CHOOSE(null) QUANTITY(1) DASH(null) LINE_END(null)
+Tokens parsed: 10
+✗ Failed to parse - returned null
+
+=== SENTENCE 47 ===
+Input: DOT(null) YOU(null) GET(null) COST_VALUE({e}{e}{e}) PERIOD(null) LINE_END(null)
+Tokens parsed: 7
+✗ Stack overflow - infinite recursion detected
+
+=== SENTENCE 48 ===
+Input: DOT(null) PUT(null) A(null) STAT_CHANGE(+1 +1) COUNTER(null) ON(null) TARGET(null) SUPERTYPE(creature) PERIOD(null) LINE_END(null)
+Tokens parsed: 10
+✗ Stack overflow - infinite recursion detected
+
+=== SENTENCE 49 ===
+Input: DOT(null) CREATE(null) A(null) STAT_BLOCK(1 1) COLOR_SPEC(colorless) SUBTYPE(servo) SUPERTYPE(artifact) SUPERTYPE(creature) SUPERTYPE(token) PERIOD(null) LINE_END(null)
+Tokens parsed: 11
+✗ Stack overflow - infinite recursion detected
+
+=== SENTENCE 50 ===
+Input: KEYWORD(vigilance) LINE_END(null)
+Tokens parsed: 3
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: vigilance
+
+=== SENTENCE 51 ===
+Input: THIS(null) SUPERTYPE(creature) ENTERS(null) WITH(null) QUANTITY(3) STAT_CHANGE(+1 +1) COUNTER(null) ON(null) IT(null) PERIOD(null) LINE_END(null)
+Tokens parsed: 11
+✗ Stack overflow - infinite recursion detected
+
+=== SENTENCE 52 ===
+Input: KEYWORD(flying) LINE_END(null)
+Tokens parsed: 3
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: flying
+
+=== SENTENCE 53 ===
+Input: WHEN(null) THIS(null) SUPERTYPE(creature) ENTERS(null) COMMA(null) EXILE(null) UP(null) TO(null) QUANTITY(2) TARGET(null) SUPERTYPE(artifacts) AND_OR(null) SUPERTYPE(enchantments) PERIOD(null) LINE_END(null)
+Tokens parsed: 16
+✗ Failed to parse - returned null
+
+=== SENTENCE 54 ===
+Input: KEYWORD(plainscycling) COST_VALUE({2}) LINE_END(null)
+Tokens parsed: 4
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: plainscycling
+    Modifier:
+      Cost: MANA = {2}
+
+=== SENTENCE 55 ===
+Input: KEYWORD(replicate) COST_VALUE({1}) LINE_END(null)
+Tokens parsed: 4
+✓ Successfully parsed!
+AST Type: KeywordAbility
+AST Structure:
+  KeywordAbility: replicate
+    Modifier:
+      Cost: MANA = {1}
+
+=== SENTENCE 56 ===
+Input: COUNTER(null) TARGET(null) TRIGGER(null) ABILITY(null) OR(null) COLOR_SPEC(colorless) SUPERTYPE(spell) PERIOD(null) LINE_END(null)
+Tokens parsed: 10
+✗ Stack overflow - infinite recursion detected
+
+=== SENTENCE 57 ===
+Input: CHOOSE(null) TARGET(null) SUPERTYPE(creature) OR(null) SUPERTYPE(planeswalker) PERIOD(null) YOU(null) GET(null) COST_VALUE({e}{e}) COMMA(null) THEN(null) YOU(null) MAY(null) PAY(null) ANY(null) AMOUNT(null) OF(null) COST_VALUE({e}) PERIOD(null) UNRECOGNIZED(galvanic) UNRECOGNIZED(discharge) DEAL(null) THAT(null) MUCH(null) DAMAGE(null) TO(null) THAT(null) SUPERTYPE(permanent) PERIOD(null) LINE_END(null)
+Tokens parsed: 31
+✗ Stack overflow - infinite recursion detected
+
+=== SENTENCE 58 ===
+Input: YOU(null) MAY(null) SACRIFICE(null) A(null) NON(null) SUPERTYPE(token) COLOR_SPEC(green) SUPERTYPE(creature) RATHER(null) THAN(

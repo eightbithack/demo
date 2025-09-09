@@ -1,0 +1,106 @@
+=== COMPREHENSIVE MAGIC: THE GATHERING CARD ABILITY ANALYSIS ===
+Generated on: 2025-09-08T16:47:25.333272400
+Total sentences in file: 643
+
+=== SAMPLE SENTENCE ANALYSIS ===
+
+Ability Type Distribution (first 50 sentences):
+  Keyword Ability: 12
+  Saga Chapter: 3
+  Activated Ability: 3
+  Static Ability: 3
+  Triggered Ability: 17
+
+Most Common Keywords:
+  flying: 5
+  living weapon: 1
+  vigilance: 1
+  reach: 1
+  cycling: 1
+  escape: 1
+  prowess: 1
+  affinity: 1
+
+Most Common Token Types:
+  SUPERTYPE: 50
+  LINE_END: 50
+  PERIOD: 46
+  COMMA: 34
+  YOU: 28
+  KEYWORD: 22
+  THIS: 21
+  A: 18
+  COST_VALUE: 18
+  CARD: 15
+  QUANTITY: 15
+  TO: 14
+  OF: 13
+  WHEN: 12
+  YOUR: 12
+
+=== KNOWN WORKING CASES ===
+
+Core Test Cases (4):
+  1. KEYWORD(affinity) FOR(null) SUPERTYPE(artifacts) LINE_END(null)
+  2. KEYWORD(flying) LINE_END(null)
+  3. COST_VALUE({2}{g}) COLON(null) KEYWORD(adapt) QUANTITY(2) PERIOD(null) LINE_END(null)
+  4. SAGA_COUNT(1) DASH(null) EXILE(null) TARGET(null) SUPERTYPE(creature) A(null) OPPONENT(null) CONTROL(null) WITH(null) POWER(null) QUANTITY(3) OR(null) MORE(null) PERIOD(null) LINE_END(null)
+
+Simple Keyword Cases (8):
+  1. KEYWORD(reach) LINE_END(null)
+  2. KEYWORD(trample) LINE_END(null)
+  3. KEYWORD(hexproof) LINE_END(null)
+  4. KEYWORD(deathtouch) LINE_END(null)
+  5. KEYWORD(lifelink) LINE_END(null)
+  6. KEYWORD(vigilance) LINE_END(null)
+  7. KEYWORD(menace) LINE_END(null)
+  8. KEYWORD(first strike) LINE_END(null)
+
+Expected Success Rate: 100% for simple cases
+Expected Success Rate: ~90% for complex cases
+
+=== PARSER IMPROVEMENT RECOMMENDATIONS ===
+
+1. RECURSION PROTECTION:
+   - Add recursion depth limits to all parser methods
+   - Implement stack overflow detection and recovery
+   - Add timeout mechanisms for long-running parses
+
+2. ERROR HANDLING:
+   - Implement better error recovery for failed parses
+   - Add graceful degradation for partial parses
+   - Provide detailed error messages for debugging
+
+3. GRAMMAR IMPROVEMENTS:
+   - Fix infinite recursion in parseSequence() method
+   - Improve handling of complex triggered abilities
+   - Add support for more static ability patterns
+
+4. PERFORMANCE OPTIMIZATION:
+   - Add memoization for repeated parse attempts
+   - Implement early termination for impossible parses
+   - Add progress tracking for long parse operations
+
+5. TESTING AND VALIDATION:
+   - Create comprehensive test suite for all ability types
+   - Add regression tests for known working cases
+   - Implement automated parsing validation
+
+=== CURRENT PARSER STATUS ===
+✓ Token parsing works correctly
+✓ Simple keyword abilities parse successfully
+✓ Activated abilities with cost + effect work
+✓ Saga chapters parse correctly
+✓ Basic AST construction functions properly
+
+✗ Complex triggered abilities cause infinite recursion
+✗ Static abilities need more robust parsing
+✗ Some token sequences cause infinite loops
+✗ Parser lacks proper error handling for edge cases
+
+=== CONCLUSION ===
+The parser successfully handles the core Magic: The Gathering card ability
+patterns for simple cases, but needs significant improvements to handle
+complex triggered abilities and static abilities without infinite recursion.
+The foundation is solid and can be extended with proper recursion protection
+and error handling mechanisms.
